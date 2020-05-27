@@ -24189,7 +24189,7 @@ var regexr = (function () {
       window.onbeforeunload = e => this.unsaved ? "Você possui alterações não salvas." : null;
 
       this.resetUnsaved();
-      setTimeout(() => this._initAds(), 100);
+      // setTimeout(() => this._initAds(), 100);
     }
 
     _initAds() {
