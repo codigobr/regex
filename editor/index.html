@@ -9,8 +9,7 @@
     <!-- Folha de estilo css -->
     <link rel="stylesheet" type="text/css" href="regexr.css">
     <meta name="title" content="RegEx - Aprenda, Construa &amp; Teste Expressões Regulares Online Grátis">
-    <meta name="description" content="Regular expression tester with syntax highlighting, PHP / PCRE & JS Support, contextual help, cheat sheet, reference, and searchable community patterns.">
-    <meta name="description" content="Testando de expressões regulares com destaque de código, suporte ao motor PHP / PCRE & JS, ajuda contextual, folha de dicas, referência, e padrões de comunidade pesquisáveis.">
+    <meta name="description" content="Editor de expressões regulares com destaque de código, suporte ao motor PHP / PCRE & JS, ajuda contextual, folha de dicas, referência, e padrões de comunidade pesquisáveis.">
     <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png?1">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png?1">
@@ -37,6 +36,14 @@
     <meta name="twitter:description" content="RegEx é uma ferrmanta online para aprender, construir & testar expressões regulares (RegEx / RegExp).">
     <meta name="twitter:image" content="https://regexr.com/assets/card.png">
     <meta name="twitter:url" content="https://regex.net.com/">
+
+    <style type="text/css">
+      @media only screen and (max-width: 600px) {
+        .hide-small {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <div style="display:none;">
@@ -154,7 +161,7 @@
           <use xlink:href="#RegExr"></use>
         </svg>
         <div class="settings">
-          <span class="name">Padrão Sem Nome</span>
+          <span class="name">RegEx Sem Título</span>
           <svg class="icon share">
             <use xlink:href="#share">
               <title>Configurações do Padrão</title>
@@ -175,7 +182,8 @@
           </li>
           <li class="by">por <a href="http://codigo.net.br">código</a></li>
           <li class="github"><a href="http://github.com/codigobr/regex">GitHub</a></li>
-          <!-- Opção de logar desabilitada, já que não tem o lado do server ainda
+
+          <!-- Opção de logar desabilitada, já que não tem o lado do server ainda, tenho que alter o js -->
           <li class="signin">
             <a>
               <svg class="icon user inline">
@@ -183,7 +191,8 @@
               </svg>
               <span class="label">Sign In</span>
             </a>
-          </li> -->
+          </li>
+
         </ul>
       </header>
       <div class="app">
@@ -198,7 +207,7 @@
               </div>
               <svg class="small icon close">
                 <use xlink:href="#close">
-                  <title>Minimize menu</title>
+                  <title>Minimizar o menu</title>
                 </use>
               </svg>
             </header>
@@ -213,18 +222,18 @@
             </header>
             <ul class="list"></ul>
             <div class="content">
-              RegExr is an online tool to <b>learn</b>, <b>build</b>, &amp; <b>test</b> Regular Expressions (RegEx / RegExp).
+              RegEx é uma ferramenta online para <b>aprender</b>, <b>construir</b>, &amp; <b>testar</b> Expressões Regulares (RegEx / RegExp).
               <hr>
               <ul>
-                <li>Supports <b>JavaScript</b> &amp; <b>PHP/PCRE</b> RegEx.</li>
-                <li>Results update in <b>real-time</b> as you type.</li>
-                <li><b>Roll over</b> a match or expression for details.</li>
-                <li>Validate patterns with suites of <b>Tests</b>.</li>
-                <li><b>Save</b> &amp; share expressions with others.</li>
-                <li>Use <b>Tools</b> to explore your results.</li>
-                <li>Full <b>RegEx Reference</b> with help &amp; examples.</li>
-                <li><b>Undo</b> &amp; <b>Redo</b> with {{getCtrlKey()}}-Z / Y in editors.</li>
-                <li>Search for &amp; rate <b>Community Patterns</b>.</li>
+                <li>Compatível com o RegEx do <b>JavaScript</b> e do <b>PHP/PCRE</b>.</li>
+                <li>Os resultados aparecem em <b>tempo real</b> enquanto você digita.</li>
+                <li><b>Posicione o mouse sobre </b> uma correspondência ou expressão para saber mais detalhes.</li>
+                <li>Valide padrões com conjunto de <b>Testes</b>.</li>
+                <li><b>Salve</b> &amp; compartilhe expressões com outros usuários.</li>
+                <li>Use as <b>Ferramentas</b> para explorar os resultados.</li>
+                <li><b>Referência Completa de Expressões Regulares</b> incluindo ajuda &amp; exemplos.</li>
+                <li><b>Desfazer</b> &amp; <b>Refazer</b> usando a combinação {{getCtrlKey()}}-Z / Y nos editores.</li>
+                <li>Pesquise &amp; avalie os <b>Padrões da Comunidade</b>.</li>
               </ul>
             </div>
             <div class="hello">
@@ -246,7 +255,7 @@
                   </div>
                 </a>
               </div>
-              <div class="noad"> <b>Want to support RegExr?</b> Consider disabling your ad-blocker for this domain. We'll show a non-intrusive, dev-oriented ad in this area. </div>
+              <div class="noad"> Quer apoiar o <b>regex.net.br?</b> Considere desabilitar o ad-blocker para esse domínio. Nós mostraremos um propaganda não intrusiva e destinada a desenvolvedores nessa área.</div>
             </div>
           </div>
           <div class="min">
@@ -257,7 +266,7 @@
           <div class="blocker"></div>
           <section class="expression">
             <header>
-              <h1>Expression</h1>
+              <h1><span class="hide-small">Expressão Regular (</span>RegEx<span class="hide-small">)</span></h1>
               <div class="controlbar">
                 <div class="button flavor">
                   <svg class="icon">
@@ -272,10 +281,16 @@
                   <svg class="icon">
                     <use xlink:href="#flags"></use>
                   </svg>
-                  <span class="label">Flags</span>
+                  <span class="label hide-small">Sinalizadores</span>
                   <svg class="icon dropdown">
                     <use xlink:href="#dropdown"></use>
                   </svg>
+                </div>
+                <div class="button flags">
+                  <svg class="icon">
+                    <use xlink:href="#copy"></use>
+                  </svg>
+                  <span class="label hide-small">Copiar</span>
                 </div>
               </div>
             </header>
@@ -294,20 +309,18 @@
                 <svg class="icon add">
                   <use xlink:href="#add"></use>
                 </svg>
-                <span class="label">Add Test</span>
+                <span class="label">Adicionar Teste</span>
               </div>
               <div class="controlbar">
-                <div class="control result">No match.</div>
+                <div class="control result">Nenhuma Correspondência.</div>
               </div>
             </header>
             <article>
               <article class="editor multiline">
-                <div class="pad"> <textarea>
-                  RegExr was created by gskinner.com, and is proudly hosted by Media Temple.
-                  Edit the Expression & Text to see matches. Roll over matches or the expression for details. PCRE & JavaScript flavors of RegEx are supported. Validate your expression with Tests mode.
-                  The side bar includes a Cheatsheet, full Reference, and Help. You can also Save & Share with the Community, and view patterns you create or favorite in My Patterns.
-                  Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.
-                  </textarea>
+                <div class="pad">
+<textarea>Edite a Expressão e o texto para ver as correspondências. Passe o mouse sobre as correspondências ou a expressão para obter detalhes. Os mecanismos RegEx do PCRE e JavaScript são suportados. Valide sua expressão com o modo Testes.
+A barra lateral inclui uma Colinha, Referência completa e Ajuda. Você também pode Salvar e compartilhar com a comunidade e visualizar os padrões criados ou favoritos em Meus padrões.
+Explore os resultados com as Ferramentas abaixo. O "Substituir" permite trocar as correspondências por um outro texto. O "Listar" apresenta uma lista com todas as correspondências encontradas. O "Detalhar" lista grupos de captura. O "Explicar" descreve sua expressão em português simples.</textarea>
                 </div>
               </article>
               <div class="tests">
@@ -316,22 +329,22 @@
                   <svg class="icon add">
                     <use xlink:href="#add"></use>
                   </svg>
-                  <span class="label">Add Test</span>
+                  <span class="label">Adicionar Teste</span>
                 </div>
                 <div class="default">
-                  Build a suite of tests that your expression should (or should not) match.
-                  <p>Create new tests with the 'Add Test' button. Click a test to edit the name, type, & text.</p>
+                  Crie um conjunto de testes com os quais sua expressão deva (ou não) corresponder.
+                  <p>Crie novos testes com o botão 'Adicionar Teste'. Clique sobre um 'teste' para editar o nome, tipo & texto.</p>
                 </div>
               </div>
             </article>
           </section>
           <section class="tools">
             <header>
-              <h1>Tools</h1>
+              <h1>Ferramentas</h1>
               <ul class="segcontrol toollist"></ul>
               <svg class="small icon max">
                 <use xlink:href="#close">
-                  <title>Toggle tools panel</title>
+                  <title>Alternar painel de ferrramentas</title>
                 </use>
               </svg>
             </header>
@@ -358,7 +371,7 @@
       </div>
       <div id="tooltip-flavor">
         <header>
-          <h1>RegEx Engine</h1>
+          <h1>Mecanismo RegEx</h1>
           <svg class="icon help">
             <use xlink:href="#help"></use>
           </svg>
@@ -368,7 +381,7 @@
       </div>
       <div id="tooltip-flags">
         <header>
-          <h1>Expression Flags</h1>
+          <h1>Sinalizadores de expressão</h1>
           <svg class="icon help">
             <use xlink:href="#help"></use>
           </svg>
@@ -382,126 +395,126 @@
       <div id="tooltip-signin">
         <div class="signin">
           <header>
-            <h1>Sign In</h1>
+            <h1>Entrar</h1>
             <svg class="icon help">
               <use xlink:href="#help"></use>
             </svg>
           </header>
           <hr>
-          <div class="content"> Sign in to persist favorites &amp; patterns. Click the help icon above for info. <br><br> Any unsaved changes will be lost. Saved patterns &amp; favorites will be migrated to your account. </div>
+          <div class="content"> Faça login para manter os favoritos e os padrões. Clique no ícone de ajuda acima para obter informações. <br> <br> Quaisquer alterações não salvas serão perdidas. Os padrões e favoritos salvos serão migrados para sua conta. </div>
           <hr>
           <ul class="list"></ul>
         </div>
         <div class="signout">
           <header>
-            <h1>Sign Out</h1>
+            <h1>Sair</h1>
           </header>
           <hr>
-          <div class="content"> You are currently signed in as <b class="username">--</b> via <b class="type">--</b>. <br><br> <span class="signoutbtn">Sign out.</span> </div>
+          <div class="content"> No momento você está conectado como <b class="username">--</b> via <b class="type">--</b>. <br><br> <span class="signoutbtn">Sair.</span> </div>
         </div>
         <div class="distract">
           <svg class="icon distractor anim-spin">
             <use xlink:href="#distractor"></use>
           </svg>
-          One moment...
+          Um momento...
         </div>
       </div>
       <div id="cheatsheet">
         <table class="cheatsheet">
           <tr>
-            <th colspan="2" data-id="charclasses">Character classes</th>
+            <th colspan="2" data-id="charclasses">Classes de caracteres</th>
           </tr>
           <tr>
             <td>.</td>
-            <td>any character except newline</td>
+            <td>qualquer caractere menos a quebra de linha</td>
           </tr>
           <tr>
             <td>\w \d \s</td>
-            <td>word, digit, whitespace</td>
+            <td>palavra, digito, espaço em branco</td>
           </tr>
           <tr>
             <td>\W \D \S</td>
-            <td>not word, digit, whitespace</td>
+            <td>nenhuma palavra, digito, espaço em branco</td>
           </tr>
           <tr>
             <td>[abc]</td>
-            <td>any of a, b, or c</td>
+            <td>qualquer a, b, ou c</td>
           </tr>
           <tr>
             <td>[^abc]</td>
-            <td>not a, b, or c</td>
+            <td>nenhum a, b, or c</td>
           </tr>
           <tr>
             <td>[a-g]</td>
-            <td>character between a & g</td>
+            <td>caractere entre a & g</td>
           </tr>
           <tr>
-            <th colspan="2" data-id="anchors">Anchors</th>
+            <th colspan="2" data-id="anchors">Âncoras</th>
           </tr>
           <tr>
             <td>^abc$</td>
-            <td>start / end of the string</td>
+            <td>incio / fim de um palavra</td>
           </tr>
           <tr>
             <td>\b \B</td>
-            <td>word, not-word boundary</td>
+            <td>palavra, limite não-palavra</td>
           </tr>
           <tr>
-            <th colspan="2" data-id="escchars">Escaped characters</th>
+            <th colspan="2" data-id="escchars">Caracteres escapados</th>
           </tr>
           <tr>
             <td>\. \* \\</td>
-            <td>escaped special characters</td>
+            <td>caracteres especiais escapados</td>
           </tr>
           <tr>
             <td>\t \n \r</td>
-            <td>tab, linefeed, carriage return</td>
+            <td>tab (tabulação), linefeed (quebra de linha), carriage return (quebra de linha)</td>
           </tr>
           <tr>
-            <th colspan="2" data-id="groups">Groups & Lookaround</th>
+            <th colspan="2" data-id="groups">Grupos & Pesquisa (Lookaround)</th>
           </tr>
           <tr>
             <td>(abc)</td>
-            <td>capture group</td>
+            <td>captura um grupo</td>
           </tr>
           <tr>
             <td>\1</td>
-            <td>backreference to group #1</td>
+            <td>referência anterior ao grupo #1</td>
           </tr>
           <tr>
             <td>(?:abc)</td>
-            <td>non-capturing group</td>
+            <td>não capturar grupo</td>
           </tr>
           <tr>
             <td>(?=abc)</td>
-            <td>positive lookahead</td>
+            <td>pesquisa a frente positiva (positive lookahead)</td>
           </tr>
           <tr>
             <td>(?!abc)</td>
-            <td>negative lookahead</td>
+            <td>pesquisa a frente negativa (negative lookahead)</td>
           </tr>
           <tr>
-            <th colspan="2" data-id="quants">Quantifiers & Alternation</th>
+            <th colspan="2" data-id="quants">Quantificadores & Alternação</th>
           </tr>
           <tr>
             <td>a* a+ a?</td>
-            <td>0 or more, 1 or more, 0 or 1</td>
+            <td>0 ou mais, 1 ou mais, 0 ou 1</td>
           </tr>
           <tr>
             <td>a{5} a{2,}</td>
-            <td>exactly five, two or more</td>
+            <td>exatamente cinco, dois ou mais</td>
           </tr>
           <tr>
             <td>a{1,3}</td>
-            <td>between one & three</td>
+            <td>entre 1 & 3</td>
           </tr>
           <tr>
             <td>a+? a{2,}?</td>
-            <td>match as few as possible</td>
+            <td>corresponder o mínimo possível</td>
           </tr>
           <tr>
             <td>ab|cd</td>
-            <td>match ab or cd</td>
+            <td>corresponder ab ou cd</td>
           </tr>
         </table>
       </div>
@@ -511,12 +524,12 @@
           <div>
             <svg class="icon favorites">
               <use xlink:href="#favorites">
-                <title>Favorite (add to My Patterns)</title>
+                <title>Favoritos (adicionar aos Meus Padrões)</title>
               </use>
             </svg>
             <svg class="icon share">
               <use xlink:href="#share">
-                <title>Load & open pattern settings</title>
+                <title>Carregar & Abrir Configurações de padrão</title>
               </use>
             </svg>
           </div>
@@ -526,11 +539,11 @@
             <svg class="icon link">
               <use xlink:href="#link"></use>
             </svg>
-            <div class="label">Load</div>
+            <div class="label">Carregar</div>
             <div class="url">--</div>
             <svg class="icon copy">
               <use xlink:href="#copy">
-                <title>Copy to clipboard</title>
+                <title>Copiar para a memória</title>
               </use>
             </svg>
           </div>
@@ -538,16 +551,16 @@
             <svg class="icon thumb">
               <use xlink:href="#thumb"></use>
             </svg>
-            <div class="label">Rate</div>
+            <div class="label">Avaliar</div>
             <svg class="icon rate thumbdown">
               <use xlink:href="#thumb">
-                <title>Rate pattern</title>
+                <title>Avaliar padrão</title>
               </use>
             </svg>
             <span class="rating">--</span>
             <svg class="icon rate thumbup">
               <use xlink:href="#thumb">
-                <title>Rate pattern</title>
+                <title>Avaliar padrão</title>
               </use>
             </svg>
           </div>
@@ -562,14 +575,14 @@
             <svg class="icon user">
               <use xlink:href="#user"></use>
             </svg>
-            <div class="label signin"><a>Sign in</a> to avoid losing your patterns!</div>
-            <div class="label signout">Signed in as <b class="username">--</b></div>
+            <div class="label signin"><a>Entre</a> para evitar perder os seus <b>padrões</b>!</div>
+            <div class="label signout">Logado como <b class="username">--</b></div>
           </div>
           <div class="save row">
-            <div class="message">Saving will create a shareable public link.</div>
+            <div class="message">Ao salvar será criado um link público compartilhável.</div>
             <div class="buttons row">
               <div class="fork button">Fork</div>
-              <div class="save button default">Save</div>
+              <div class="save button default">Salvar</div>
               <div class="status"></div>
             </div>
           </div>
@@ -578,20 +591,20 @@
               <svg class="icon info">
                 <use xlink:href="#info"></use>
               </svg>
-              <div class="label">Optional info</div>
+              <div class="label">Informação opcional</div>
             </div>
-            <div class="inputs"> <input class="name" type="text" placeholder="pattern name (recommended)" maxlength="30"> <input class="author" type="text" placeholder="author name" maxlength="20"> <textarea class="description" rows="4" placeholder="description" maxlength="250"></textarea> <input class="keywords" type="text" placeholder="keywords for search" maxlength="50"> </div>
+            <div class="inputs"> <input class="name" type="text" placeholder="nome do padrão (recomendado)" maxlength="30"> <input class="author" type="text" placeholder="nome do autor" maxlength="20"> <textarea class="description" rows="4" placeholder="descrição" maxlength="250"></textarea> <input class="keywords" type="text" placeholder="palavras-chave para pesquisar" maxlength="50"> </div>
           </div>
           <div class="actions list">
             <div class="link row">
               <svg class="icon link">
                 <use xlink:href="#link"></use>
               </svg>
-              <div class="label">Shareable link</div>
+              <div class="label">Link compartilhável</div>
               <div class="url"></div>
               <svg class="icon copy">
                 <use xlink:href="#copy">
-                  <title>Copy to clipboard</title>
+                  <title>Copiar para a memória</title>
                 </use>
               </svg>
             </div>
@@ -599,7 +612,7 @@
               <svg class="icon private">
                 <use xlink:href="#private"></use>
               </svg>
-              <div class="label">Private</div>
+              <div class="label">Privado</div>
               <div class="status"></div>
               <svg class="icon check">
                 <use xlink:href="#check"></use>
@@ -609,7 +622,7 @@
               <svg class="icon favorites">
                 <use xlink:href="#favorites"></use>
               </svg>
-              <div class="label">Favorite</div>
+              <div class="label">Favorito</div>
               <div class="status"></div>
               <svg class="icon check">
                 <use xlink:href="#check"></use>
@@ -619,7 +632,7 @@
               <svg class="icon community">
                 <use xlink:href="#community"></use>
               </svg>
-              <div class="label">Share with the Community</div>
+              <div class="label">Compartilhar com a comunidade</div>
               <svg class="icon arrow">
                 <use xlink:href="#arrowright"></use>
               </svg>
@@ -628,49 +641,50 @@
               <svg class="icon delete">
                 <use xlink:href="#delete"></use>
               </svg>
-              <div class="label">Delete</div>
+              <div class="label">Apagar</div>
               <div class="status"></div>
             </div>
           </div>
         </div>
         <div id="share_community">
-          Edit or add extra information to help people find this expression.
-          <div class="inputs"> <input class="name" type="text" placeholder="pattern name (required)" maxlength="30"> <input class="author" type="text" placeholder="author name" maxlength="20"> <textarea class="description" rows="3" placeholder="description" maxlength="250"></textarea> <input class="keywords" type="text" placeholder="keywords for search" maxlength="50"> </div>
+          Edite ou adicione informações extras para ajudar as pessoas a encontrarem essa expressão.
+          <div class="inputs"> <input class="name" type="text" placeholder="nome do padrão (requerido)" maxlength="30"> <input class="author" type="text" placeholder="nome do autor" maxlength="20"> <textarea class="description" rows="3" placeholder="descrição" maxlength="250"></textarea> <input class="keywords" type="text" placeholder="palavras-chave para pesquisar" maxlength="50"> </div>
           <div class="buttons">
-            <div class="button cancel">Cancel</div>
+            <div class="button cancel">Cancelar</div>
             <div class="button share default">
               <svg class="icon community">
                 <use xlink:href="#community"></use>
               </svg>
-              Share
+              Compartilhar
             </div>
             <div class="status"></div>
           </div>
           This will share a public copy of this Expression (including Text) with the Community. <b>You will not be able to edit or delete the shared copy.</b>
+          Isso vai compartilhar uma cópia pública dessa expressão (incluindo o texto) com a Comunidade. <b>Você não será capaz de editar ou apagar a cópia compartilhada.</b>
         </div>
       </div>
       <div id="tests_item">
         <header>
           <svg class="icon fail small">
             <use xlink:href="#close">
-              <title>Failed</title>
+              <title>Falhou</title>
             </use>
           </svg>
           <svg class="icon pass small">
             <use xlink:href="#check">
-              <title>Passed</title>
+              <title>Passou</title>
             </use>
           </svg>
           <h1><input type="text" class="name" placeholder="Untitled Test"></h1>
           <div class="button type">
-            <span class="label">Match all</span>
+            <span class="label">Associar todas</span>
             <svg class="icon dropdown">
               <use xlink:href="#dropdown"></use>
             </svg>
           </div>
           <svg class="icon delete small">
             <use xlink:href="#delete">
-              <title>Delete test</title>
+              <title>Apagar teste</title>
             </use>
           </svg>
         </header>
@@ -690,8 +704,8 @@
         // local test user:
         userId: 111,
         authenticated: true,
-        username: "gskinner",
-        author: "grantskinner",
+        username: "regex",
+        author: "regex.net.br",
         type: "temporary"
       }, {
         "PCREVersion": "8.38 2015-11-23",

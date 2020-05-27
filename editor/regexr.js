@@ -15090,7 +15090,7 @@ var regexr = (function () {
   /**
    * Contains properties and methods shared by all events for use with
    * {{#crossLink "EventDispatcher"}}{{/crossLink}}.
-   * 
+   *
    * Note that Event objects are often reused, so you should never
    * rely on an event object's state outside of the call stack it was received in.
    * @class Event
@@ -15245,12 +15245,12 @@ var regexr = (function () {
 
     /**
      * Causes the active listener to be removed via removeEventListener();
-     * 
+     *
      * 		myBtn.addEventListener("click", function(evt) {
      * 			// do stuff...
      * 			evt.remove(); // removes this listener.
      * 		});
-     * 
+     *
      * @method remove
      **/
     remove() {
@@ -15340,8 +15340,8 @@ var regexr = (function () {
       /**
        * A shortcut to the removeEventListener method, with the same parameters and return value. This is a companion to the
        * .on method.
-       * 
-       * <b>IMPORTANT:</b> To remove a listener added with `on`, you must pass in the returned wrapper function as the listener. See 
+       *
+       * <b>IMPORTANT:</b> To remove a listener added with `on`, you must pass in the returned wrapper function as the listener. See
        * {{#crossLink "EventDispatcher/on"}}{{/crossLink}} for an example.
        *
        * @method off
@@ -15355,10 +15355,10 @@ var regexr = (function () {
 
     /**
      * Static initializer to mix EventDispatcher methods into a target object or prototype.
-     * 
+     *
      * 		EventDispatcher.initialize(MyClass.prototype); // add to the prototype of the class
      * 		EventDispatcher.initialize(myObject); // add to a specific instance
-     * 
+     *
      * @method initialize
      * @static
      * @param {Object} target The target object to inject EventDispatcher methods into. This can be an instance or a
@@ -15426,16 +15426,16 @@ var regexr = (function () {
     /**
      * A shortcut method for using addEventListener that makes it easier to specify an execution scope, have a listener
      * only run once, associate arbitrary data with the listener, and remove the listener.
-     * 
+     *
      * This method works by creating an anonymous wrapper function and subscribing it with addEventListener.
      * The wrapper function is returned for use with `removeEventListener` (or `off`).
-     * 
+     *
      * <b>IMPORTANT:</b> To remove a listener added with `on`, you must pass in the returned wrapper function as the listener, or use
      * {{#crossLink "Event/remove"}}{{/crossLink}}. Likewise, each time you call `on` a NEW wrapper function is subscribed, so multiple calls
      * to `on` with the same params will create multiple listeners.
-     * 
+     *
      * <h4>Example</h4>
-     * 
+     *
      * 		var listener = myBtn.on("click", handleClick, null, false, {count:3});
      * 		function handleClick(evt, data) {
      * 			data.count -= 1;
@@ -15446,7 +15446,7 @@ var regexr = (function () {
      * 				// alternately: evt.remove();
      * 			}
      * 		}
-     * 
+     *
      * @method on
      * @param {String} type The string type of the event.
      * @param {Function | Object} listener An object with a handleEvent method, or a function that will be called when
@@ -15625,7 +15625,7 @@ var regexr = (function () {
      * Indicates whether there is at least one listener for the specified event type on this object or any of its
      * ancestors (parent, parent's parent, etc). A return value of true indicates that if a bubbling event of the
      * specified type is dispatched from this object, it will trigger at least one listener.
-     * 
+     *
      * This is similar to {{#crossLink "EventDispatcher/hasEventListener"}}{{/crossLink}}, but it searches the entire
      * event flow for a listener, not just this object.
      * @method willTrigger
@@ -18485,7 +18485,7 @@ var regexr = (function () {
       "L": y,
       // Letter
       "L&": y,
-      // Any letter 
+      // Any letter
       "Ll": y,
       // Lower case letter
       "Lm": y,
@@ -20979,99 +20979,99 @@ var regexr = (function () {
   home.label = "Menu";
   home.desc = "[from HTML]";
   home.kids = [{
-    label: "Pattern Settings",
+    label: "Configurações do Padrão",
     id: "share",
     el: "#share_main",
     list: false,
     kids: [{
-      label: "Save to my Favorites",
+      label: "Salvar nos meus Favoritos",
       id: "share_favorites",
       el: "#share_favorites"
     }, {
-      label: "Share with the Community",
+      label: "Compartilhar com a Comunidade",
       id: "share_community",
       el: "#share_community"
     }]
   }, {
-    label: "My Patterns",
+    label: "Meus Padrões",
     id: "favorites",
-    desc: "The list above will display any patterns that you create or favorite." + "<p>To edit a pattern you created, click its URL or double-click it in the list to load it, then open Save / Share to edit and save.</p>",
+    desc: "A lista acima exibirá os padrões que você criar ou favoritar." + "<p>Para editar um padrão que você criou, clique no URL ou clique duas vezes na lista para carregá-lo, então abra Salvar/Compartilhar para editar e salvar.</p>",
     search: true,
     kids: []
   }, {
-    label: "Cheatsheet",
+    label: "Folha de dicas",
     id: "cheatsheet",
     el: "#cheatsheet"
   }, {
     // injected from Reference
     id: "reference"
   }, {
-    label: "Community Patterns",
+    label: "Padrões da comunidade",
     id: "community",
-    desc: "Welcome to Community Patterns, a searchable database of patterns submitted by users like you." + "<p>After selecting a pattern, click its URL or double-click it in the list to load the full pattern. Or use the right arrow icon to load just the expression or text.</p>" + "<p>Help make the Community better by rating patterns, and submitting your own via <b>Search & Share</b> in the menu.</p>",
+    desc: "Bem-vindo ao Padrões da Comunidade, um banco de dados pesquisável de padrões enviados por usuários como você." + "<p>Após selecionar um padrão, clique na URL ou clique duas vezes na lista para carregar o padrão completo. Ou use o ícone de seta para a direita para carregar apenas a expressão ou o texto.</p>" + "<p>Ajude a melhorar a comunidade avaliando padrões, e enviando os seus via <b>Pesquisar e Compartilhar</b> localizado no menu.</p>",
     search: true,
     kids: []
   }, {
-    label: "Help",
+    label: "Ajuda",
     id: "help",
-    desc: "Help for the RegExr application. See the <b>RegEx Reference</b> for help with Regular Expressions.",
+    desc: "Ajuda para usar expressões regulares (RegEx). Veja <b>Referência do RegEx</b> para obter ajuda com expressões regulares.",
     kids: [{
-      label: "About",
-      desc: "RegExr v3.8.0 (May 26, 2020)." + "<p>Created by <a href='http://twitter.com/gskinner/' target='_blank'>Grant Skinner</a> and the <a href='http://gskinner.com/' target='_blank'>gskinner</a> team, using the <a href='http://createjs.com/' target='_blank'>CreateJS</a> & <a href='http://codemirror.net/' target='_blank'>CodeMirror</a> libraries.</p>" + "<p>You can provide feedback or log bugs on <a href='http://github.com/gskinner/regexr/' target='_blank'>GitHub</a>.</p>"
+      label: "Sobre",
+      desc: "RegExr v3.8.0 (May 26, 2020)." + "<p>Criardo por <a href='http://twitter.com/gskinner/' target='_blank'>Grant Skinner</a> e o time <a href='http://gskinner.com/' target='_blank'>gskinner</a>, usando <a href='http://createjs.com/' target='_blank'>CreateJS</a> e as bibliotecas do <a href='http://codemirror.net/' target='_blank'>CodeMirror</a>.</p>" + "<p>Você pode fornecer feedbak ou enviar erros no <a href='http://github.com/gskinner/regexr/' target='_blank'>GitHub</a>.</p>"
     }, {
-      label: "Getting started",
-      desc: "RegExr provides real-time visual results, syntax highlighting, tooltips, and undo/redo ({{getCtrlKey()}}-Z / Y) so it's easy and fun to explore Regular Expressions." + "<p>Browse through the <b>RegEx Reference</b> and test different tokens to see what they do, then check out <b>Community Patterns</b> to see examples.</p>" + "<p>You can also <b>Save</b> your patterns for later reference, or to share with others. <b>Sign In</b> to ensure you don't lose your patterns.</p>" + "<p>Modify your pattern's details, share it with the <b>Community</b>, or make it private, or delete it in <b>Pattern Settings</b></p>",
+      label: "Iniciando",
+      desc: "O editor de expressão regulares fornece resultados visuais em tempo real, realce de sintaxe, dicas de ferramentas e desfazer/refazer ({{getCtrlKey()}}-Z / Y) por isso é fácil e divertido explorar expressões regulares." + "<p>Navegue pela <b>Referência do RegEx</b> e teste tokens diferentes para ver o que eles fazem, então confira os <b>Padrões da Comunidade</b> para ter acesso a alguns exemplos.</p>" + "<p>Você também pode <b>Salvar</b> para depois usar como referência, ou para compartilhar com os outros usuários. <b>Entre</b> para garantir que você não perca os seus padrões.</p>" + "<p>Modifique os detalhes do seu padrão e compartilhe-o com a <b>Comunidade</b>, ou manhenha-o privado, ou apague-o em <b>Configurações do Padrão</b></p>",
       kids: [{
-        label: "Expression panel",
-        desc: "This is where you enter a regular expression to test. The results in the <b>Text</b> and <b>Tools</b> panel will update as you type." + "Roll over the expression for information on each token." + "<p>The buttons to the right allow you to switch RegEx engines, or edit the expression flags.</p>"
+        label: "Painel de expressão",
+        desc: "É aqui que você insere uma expressão regular para testar. Os resultados nos paineis <b>Texto</b> e <b>Ferramentas</b> serão atualizados conforme você digita." + "Passe o mouse sobre a expressão para obter informações sobre cada token." + "<p> Os botões à direita permitem alternar os mecanismos do RegEx ou editar os sinalizadores de expressão.</p>"
       }, {
-        label: "Text panel",
-        desc: "This is where you enter text to test your expression against. Drag & drop a text file to load its contents." + "<p>Matches will be highlighted as you type. Roll over a match for information on the match and its capture groups. The match count and execution time are shown in the title bar.</p>" + "<p>Lighter colored caps at the start or end of a line indicate the match continues between lines.</p>"
+        label: "Painel do Texto",
+        desc: "É aqui que você digita o texto para testar sua expressão. Arraste e solte um arquivo de texto para carregar seu conteúdo." + "<p>As correspondências serão destacadas à medida que você digita. Passe o mouse sobre uma correspondência para obter informações sobre a correspondência e seus grupos de captura. A contagem de correspondências e o tempo de execução são mostrados na barra de título.</p>" + "<p>Indicadores de cores mais claras no início ou no final de uma linha indicam que a correspondência continua entre as linhas.</p>"
       }, {
-        label: "Tests panel",
-        desc: "This allows you to create a suite of tests that you can use to validate your <b>Expression</b> in real time." + "<p>A test can check if the pattern matches anything, matches everything, or matches nothing in the test text.</p>" + "<p>Access this panel with the toggle at the top of the <b>Text</b> panel. When you save, both your Text and Tests will be saved.</p>"
+        label: "Painel de Testes",
+        desc: "Isso permite que você crie um conjunto de testes que pode ser usado para validar sua <b>Expressão</b> em tempo real." + "<p>Um teste pode verificar se o padrão corresponde a algo, corresponde a tudo ou a nada no texto do teste.</p>" + "<p>Acesse esse painel com o <b>botão de alternância</b> na parte superior do painel de <b>Texto</b>. Quando você salvar, ambos, seu Texto e seus Testes serão salvos.</p>"
       }, {
-        label: "Tools panel",
-        desc: "Click the <b>Tools</b> title bar below the <b>Text</b> panel to show or hide the <b>Tools</b> panel." + "<p>Tools provide different ways of working with or exploring your results.</p>",
+        label: "Painel de Ferramentas",
+        desc: "Clique na barra de título das <b>Ferramentas</b> abaixo do painel de <b>Texto</b> para mostrar ou ocultar o painel de <b>Ferramentas</b>. " + " <p>As ferramentas oferecem maneiras diferentes de trabalhar e/ou explorar seus resultados.</p>",
         kids: [{
-          label: "Replace",
+          label: "Substituir",
           id: "replace",
-          desc: "The <b>Replace</b> tool replaces matches with a specified string or pattern." + "<p>Matches in the <b>Text</b> panel are replaced by the substitution string & displayed as you type.</p>" + "<p>Substitution tokens and escaped characters are supported, such as <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Roll over tokens for information, and check out the <b>RegEx Reference</b> for more information.</p>"
+          desc: "A ferramenta <b>Substituir</b> substitui as correspondências por uma sequência (texto) ou padrão especificado." + "<p>As correspondências no painel <b>Texto</b> são substituídas pela sequência de substituição e exibidas à medida que você digita.</p>" + "<p>Tokens de substituição e caracteres de escape são suportados, como <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Passe o mouse sobre os tokens ou consulte a <b>Referência do RegEx</b> para obter mais informações.</p>"
         }, {
-          label: "List",
+          label: "Lista",
           id: "list",
-          desc: "The <b>List</b> tool lists all found matches." + "<p>You can specify either a simple delimiter (ex. <code>,</code> or <code>\\n</code>), or use substitution tokens to generate more advanced reports. For example, <code>$1\\n</code> would list all group 1 results (in the JavaScript engine).</p>" + "<p>Escaped characters are supported, such as <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Roll over tokens for information.</p>"
+          desc: "A ferramenta <b>Lista</b> mostra todas as correspondências encontradas." + "<p>Você pode especificar um simples delimitador (<code>,</code> or <code>\\n</code>), ou usar tokens de substituição para gerar relatórios mais avançados. Por exemplo, <code>$1\\n</code> listaria todos os resultados do grupo 1 (no mecanismo do JavaScript).</p>" + "<p>Caracteres escapados são suportados, como <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Passe o mouse sobre os tokens para obter informações.</p>"
         }, {
-          label: "Details",
+          label: "Detalhes",
           id: "details",
-          desc: "The <b>Details</b> tool displays the full text of a match and its capture groups." + "<p>Click on a highlighted match in the <b>Text</b> panel to display the details for that match.</p>" + "<p>Roll over a group row to highlight that group in your <b>Expression</b>.</p>"
+          desc: "A ferramenta <b>Detalhes</b> exibe o texto completo de uma correspondência e seus grupos de captura." + "<p>Clique em uma correspondência destacada no painel <b>Texto</b> para exibir os detalhes dessa correspondência.</p>" + "<p>Passe o mouse sobre uma linha do grupo para destacar esse grupo em sua <b>Expressão</b>.</p>"
         }, {
-          label: "Explain",
+          label: "Explicar",
           id: "explain",
-          desc: "The <b>Explain</b> tool displays a detailed breakdown of the <b>Expression</b>." + "<p>Mouse over the explanation to highlight the related tokens in the <b>Expression</b> panel and vice versa.</p>" + "<p>Click an item in the explanation to show more info in the <b>RegEx Reference</b>.</p>"
+          desc: "A ferramenta <b>Explicar</b> exibe informações detalhadas da <b>Expressão</b>." + "<p>Passe o mouse sobre a explicação para destacar os tokens relacionados no painel <b>Expressão</b> e vice-versa.</p>" + "<p>Clique em um item na explicação para mostrar mais informações na <b>Referência do RegEx</b>.</p>"
         }]
       }, {
         label: "Menu",
-        desc: "The <b>Menu</b> (this panel) includes <b>Help</b>, a full <b>RegEx Reference</b>, a <b>Cheatsheet</b>, and <b>Pattern Settings</b> features." + "<p>Double-click a selected item in the <b>RegEx Reference</b> to insert it into your <b>Expression</b>. Click the arrow beside an example to load it.</p>" + "<p>The menu also includes searchable <b>Community Patterns</b>, and patterns you've created or favorited in <b>My Patterns</b>.</p>"
+        desc: "O <b>Menu</b> (este painel) inclui <b>Ajuda</b>, uma <b>Referência do RegEx</b> completa, uma <b>Folha de dicas</b> e as <b>Configurações do Padrão</b>." + "<p>Clique duas vezes em um item selecionado na <b>Referência do RegEx</b> para inseri-lo em sua <b>Expressão</b>. Clique na seta ao lado de um exemplo para carregá-lo.</p>" + "<p>O menu também inclui <b>Padrões da comunidade</b> pesquisáveis e padrões que você criou ou adicionou em <b>Meus padrões</b>.</p>"
       }]
     }, {
-      label: "Signing in",
+      label: "Login",
       id: "signin",
-      desc: "Before you sign in, RegExr creates a temporary account which relies on a browser cookie. This means you can't access your patterns on other computers, and that you could lose your patterns if your cookies are deleted or expire." + "<p>Signing in creates a permanent account, so you can access your patterns anywhere, anytime.</p>" + "<p>Your existing patterns &amp; favorites will automatically be assigned to the new account.</p>" + "<p>We don't use your info for anything other than signing you into your RegExr account.</p>"
+      desc: "Antes de entrar, o RegExr cria uma conta temporária que depende de um cookie do navegador. Isso significa que você não pode acessar seus padrões em outros computadores e que poderá perdê-los se seus cookies forem excluídos ou expirarem." + "<p>O login cria uma conta permanente, para que você possa acessar seus padrões em qualquer lugar e a qualquer momento.</p>" + "<p>Seus padrões e favoritos existentes serão automaticamente atribuídos à nova conta.</p>" + "<p>Suas informações são utilizadas apenas para entrar na sua conta do regex.net.br, não compartilhamos seus dados.</p>"
     }, {
       id: "engine",
-      label: "RegEx engines",
-      desc: "While the core feature set of regular expressions is fairly consistent, different implementations (ex. Perl vs Java) may have different features or behaviours." + "<p>RegExr currently supports JavaScript RegExp executed in your browser and PCRE via PHP.</p>" + "<p>You can switch engines using the dropdown in Expression.</p>",
+      label: "Mecanismos do RegEx",
+      desc: "Embora o conjunto de recursos principais de expressões regulares seja bastante consistente, implementações diferentes (por exemplo, Perl x Java) podem ter recursos ou comportamentos diferentes." + "<p>Atualmente, o nosso editor de expressão regular suporta o mecanismo do JavaScript executado diretamente no seu navegador e PCRE via PHP.</p>" + "<p>Você pode mudar de mecanismo usando o menu suspenso ao lado direito de <b>Expressão Regular</b>.</p>",
       kids: [{
         label: "JavaScript",
-        desc: "Your browser's JavaScript engine is used to execute RegEx in an asynchronous worker using <code>RegExp.exec()</code>." + "<p>Note that while implementations are mostly consistent, there are small variations between browsers. Here is a short list of known differences:<ul>" + "<li>Older browsers don't support the u or y flags</li>" + "<li>Differences in handling of certain ambiguous escapes: \\8 \\9</li>" + "<li>Chrome handles \\x & \\u escapes slightly differently than other browsers</li>" + "<li>Chrome supports lookbehind, but it isn't yet in the JS spec</li>" + "<li>Safari ignores leading zeros in octal escapes (ex. \\00020)</li>" + "</ul></p>"
+        desc: "O mecanismo JavaScript do seu navegador é usado para executar o RegEx em um Worker assíncrono usando <code>RegExp.exec()</code>." + "<p>Observe que, embora as implementações sejam consistentes, há pequenas variações entre os navegadores. Aqui está uma lista de diferenças conhecidas:<ul>" + "<li>Navegadores mais antigos não suportam os sinalizadores u ou y</li>" + "<li>Diferenças na manipulação de certos caracteres de escape ambíguos: \\8 \\9</li>" + "<li>O Chrome lida com os caracteres de escape \\x & \\u de uma forma um pouco diferente dos outros navegadores</li>" + "<li>O Chrome suporta lookbehind, mas ainda não está na especificação JS</li>" + "<li>Safari ignora zeros à esquerda em escapes octais (ex. \\00020)</li>" + "</ul></p>"
       }, {
         label: "PCRE (PHP)",
-        desc: "PHP {{getPHPVersion()}} and PCRE {{getPCREVersion()}} are used to execute your pattern on our server."
+        desc: "PHP {{getPHPVersion()}} e PCRE {{getPCREVersion()}} são usados para executar seu padrão em nosso servidor."
       }]
     }, {
-      label: "Query string support",
-      desc: "In addition to the built in <b>Save</b> mechanism which creates a shareable link, RegExr also supports the ability to pre-populate a pattern via the query string." + "<p>The following query string params are recognized:<ul>" + "<li><code>engine</code> - the RegEx engine to use (<code>js</code> or <code>pcre</code>)</li>" + "<li><code>expression</code> - populates the Expression area. It is recommended to pass a full expression with flags (<code>/.*/ig</code>) not just the pattern (<code>.*</code>)</li>" + "<li><code>text</code> - populates the Text area</li>" + "<li><code>tool</code> - sets the tool (replace, list, details, or explain)</li>" + "<li><code>input</code> - populates the tool input field</li>" + "</ul></p>" + "Ex. <a href='http://regexr.com/?expression=/./g&text=test'>regexr.com/?expression=/./g&text=test</a>"
+      label: "Suporte a cadeias de consulta",
+      desc: "Além do mecanismo interno <b>Salvar</b> que cria um link compartilhável, o editor de expressão regular também suporta a capacidade de preencher previamente um padrão por meio da string de consulta." + "<p>Os seguintes parâmetros de cadeia de consulta são reconhecidos:<ul>" + "<li><code>engine</code> - o mecanismo RegEx a ser usado (<code>js</code> ou <code>pcre</code>)</li>" + "<li><code>expression</code> - preenche a área <b>Expressão Regular</b>. Recomenda-se passar uma expressão completa com sinalizadores (<code>/.*/ig</code>) não apenas o padrão (<code>.*</code>)</li>" + "<li><code>text</code> - preenche a área de texto</li>" + "<li><code>tool</code> - define a ferramenta (substituir, lista, detalhes ou explicar)</li>" + "<li><code>input</code> - preenche o campo de entrada da ferramenta</li>" + "</ul></p>" + "Ex. <a href='http://regex.net.br/editor?expression=/./g&text=test'>http://regex.net.br/editor?expression=/./g&text=test</a>"
     }]
   }];
 
@@ -21511,7 +21511,7 @@ var regexr = (function () {
     _updateUI() {
       let auth = this.authenticated;
       DOMUtils.toggleClass(this.tooltipEl, "authenticated", auth);
-      DOMUtils.query(".label", this.signinBtn).innerText = auth ? "Sign Out" : "Sign In";
+      DOMUtils.query(".label", this.signinBtn).innerText = auth ? "Sair" : "Entrar";
 
       if (auth) {
         DOMUtils.query(".username", this.signoutEl).innerText = this.username;
@@ -21601,7 +21601,7 @@ var regexr = (function () {
 
     set name(val) {
       this.nameFld.value = val || "";
-      this.hNameFld.innerText = val || "Untitled Pattern";
+      this.hNameFld.innerText = val || "RegEx Sem Título";
     }
 
     get author() {
@@ -21717,19 +21717,19 @@ var regexr = (function () {
       DOMUtils.query(".action", this.hSaveBtn).innerText = isOwned ? "Save" : "Fork";
 
       if (!isOwned) {
-        text = "This pattern was created by '" + (o.author || "[anonymous]") + "'.";
+        text = "Esse padrão foi criado por '" + (o.author || "[anônimo]") + "'.";
       } else if (!isChanged) {
-        text = "No unsaved changes.";
+        text = "Nenhuma alteração não salva.";
       } else if (isNew) {
-        text = "Save will create a shareable public link.";
+        text = "Salvar criará um link público compartilhável.";
       } else {
-        text = "Save will update the current link.";
+        text = "Salvar atualizará o link atual.";
       }
 
       if (!isOwned && !isChanged) {
-        text += " Fork to create your own copy.";
+        text += " Fork para criar sua própria cópia.";
       } else if (!isNew) {
-        text += " Fork will create a new copy" + (isChanged ? " with your changes." : ".");
+        text += " Fork irá criar uma nova cópia" + (isChanged ? " com as suas alterações." : ".");
       }
 
       this._setSaveText(text);
@@ -21767,7 +21767,7 @@ var regexr = (function () {
     _pushHistory(pattern) {
       let history = window.history,
           url = Utils.getPatternURL(pattern);
-      let title = "RegExr: " + (pattern.name || "Learn, Build, & Test RegEx");
+      let title = "RegEx: " + (pattern.name || "Aprenda, Construa & Teste RegEx");
 
       if (history.state && pattern.id === history.state.id) {
         history.replaceState(pattern, title, url);
@@ -21820,7 +21820,7 @@ var regexr = (function () {
           this.nameFld.select();
         }
 
-        this._linkRow.showMessage("<b>Saved.</b> New share link created. Click to copy to clipboard.");
+        this._linkRow.showMessage("<b>Salvo.</b> Novo link de compartilhamento criado. Clique para copiar para a área de transferência.");
       }
     }
 
@@ -21872,7 +21872,7 @@ var regexr = (function () {
     _doDelete() {
       let o = this._pattern;
 
-      if (!confirm("Are you sure you want to permanently delete this pattern?")) {
+      if (!confirm("Tem certeza de que deseja excluir permanentemente esse padrão?")) {
         return;
       }
 
@@ -21887,7 +21887,7 @@ var regexr = (function () {
       app.state = {
         flavor: app.flavor.value
       };
-      setTimeout(() => app.tooltip.toggle.showOn("delete", "Pattern was permanently deleted.", this._deleteRow, true, 0), 1);
+      setTimeout(() => app.tooltip.toggle.showOn("delete", "O padrão foi excluído permanentemente.", this._deleteRow, true, 0), 1);
     }
 
     _handleErr(err, status) {
@@ -21964,7 +21964,7 @@ var regexr = (function () {
     }
 
     _getErrMsg(err) {
-      return "<span class='error'>ERROR:</span> " + app.reference.getError("servercomm");
+      return "<span class='error'>ERRO:</span> " + app.reference.getError("servercomm");
     }
 
   }
@@ -22206,7 +22206,7 @@ var regexr = (function () {
         this.contentEl.innerHTML = this._isInReference(o) ? ref.getContent(o.id) : ref.fillTags((o.desc || "") + (o.ext || ""), o, ref);
 
         if (o.example) {
-          this.contentEl.appendChild(new Example("Example", o.example).el);
+          this.contentEl.appendChild(new Example("Exemplo", o.example).el);
         }
       }
     }
@@ -22375,7 +22375,7 @@ var regexr = (function () {
       this.menuList.data = data.results;
 
       if (data.results.length === 0) {
-        this._showListMsg(this.curItem.id === "community" ? "No matches." : "No patterns created or favorited.");
+        this._showListMsg(this.curItem.id === "community" ? "Nenhuma correspondência." : "Nenhum padrão criado ou adicionado aos favoritos.");
       }
     }
 
@@ -22564,18 +22564,18 @@ var regexr = (function () {
     getQuant(token) {
       let min = token.min,
           max = token.max;
-      return min === max ? min : max === -1 ? min + " or more" : "between " + min + " and " + max;
+      return min === max ? min : max === -1 ? min + " ou mais" : "entre " + min + " e " + max;
     }
 
     getUniCat(token) {
-      return Reference.UNICODE_CATEGORIES[token.value] || "[Unrecognized]";
+      return Reference.UNICODE_CATEGORIES[token.value] || "[Não reconhecido]";
     }
 
     getModes(token) {
-      let str = token.on ? " Enable \"<code>" + token.on + "</code>\"." : "";
+      let str = token.on ? " Habilitar \"<code>" + token.on + "</code>\"." : "";
 
       if (token.off) {
-        str += " Disable \"<code>" + token.off + "</code>\".";
+        str += " Desabilitar \"<code>" + token.off + "</code>\".";
       }
 
       return str;
@@ -22594,7 +22594,7 @@ var regexr = (function () {
     }
 
     getDotAll(token) {
-      return (token.modes.s ? "including" : "except") + " line breaks";
+      return (token.modes.s ? "incluindo" : "exceto") + " quebras de linha";
     }
 
     getLabel(token) {
@@ -22639,13 +22639,13 @@ var regexr = (function () {
     /*
     Searches for tags in the string in the format:
     `{{prop.prop}}` or `{{method(prop.prop)}}`
-    
+
     The first format will inject the specified property of the data object.
     For example, `{{a.b}}` would inject the value of `data.a.b`.
-    
+
     The second will inject the results of calling the specified function on the functs object with a property of the data object as it's parameter (or the data object itself if empty).
     For example, `{{myMethod(a.b)}}` would inject the return value of `functs.myMethod(data.a.b)`.
-    
+
     Currently only supports a single param.
      */
 
@@ -22749,7 +22749,7 @@ var regexr = (function () {
 
     getError(error, token) {
       let errId = error && error.id;
-      let str = this._content.errors[errId] || "no docs for error='" + errId + "'";
+      let str = this._content.errors[errId] || "nenhum documento para o erro='" + errId + "'";
 
       if (token) {
         str = this.fillTags(str, token, this, 20);
@@ -22768,7 +22768,7 @@ var regexr = (function () {
           tip;
 
       if (token.error && !token.error.warning) {
-        label = "<span class='error'>ERROR: </span>";
+        label = "<span class='error'>ERRO: </span>";
         tip = this.getError(token.error, token);
       } else {
         label = node ? node.label || node.id || "" : token.type;
@@ -22782,11 +22782,11 @@ var regexr = (function () {
         label = "<b>" + label[0].toUpperCase() + label.substr(1) + ".</b> ";
 
         if (token.error) {
-          tip += "<span class='warningtext'><span class='error warning'>WARNING: </span>" + this.getError(token.error, token) + "</span>";
+          tip += "<span class='warningtext'><span class='error warning'>ATENÇÃO: </span>" + this.getError(token.error, token) + "</span>";
         }
       }
 
-      return tip ? label + tip : "no docs for id='" + this.idForToken(token) + "'";
+      return tip ? label + tip : "nenhum documento para o id='" + this.idForToken(token) + "'";
     }
 
     getContent(id) {
@@ -22801,14 +22801,14 @@ var regexr = (function () {
       }
 
       let more = match.l > 150;
-      let str = "<b>match: </b>" + Utils.shorten(text.substr(match.i, match.l), 150, true, "i") + "<br/><b>range: </b><code>" + match.i + "-" + (match.i + match.l - 1) + "</code>";
+      let str = "<b>correspondência: </b>" + Utils.shorten(text.substr(match.i, match.l), 150, true, "i") + "<br/><b>alcance: </b><code>" + match.i + "-" + (match.i + match.l - 1) + "</code>";
       let groups = match.groups,
           l = groups && groups.length;
 
       for (let i = 0; i < l; i++) {
         if (i > 3 && l > 5) {
           more = false;
-          str += "<br><span class='more'>see Details for " + (l - i) + " more</span>";
+          str += "<br><span class='more'>veja Detalhes para " + (l - i) + " mais</span>";
           break;
         }
 
@@ -22817,11 +22817,11 @@ var regexr = (function () {
         s = group.i !== undefined ? text.substr(group.i, group.l) : group.s;
         more = more || s && s.length > 50;
         str += i > 0 ? "<br>" : "<hr>";
-        str += "<b>group #" + (i + 1) + ": </b>" + Utils.shorten(s, 50, true, "i");
+        str += "<b>grupo #" + (i + 1) + ": </b>" + Utils.shorten(s, 50, true, "i");
       }
 
       if (more) {
-        str += "<br><span class='more'>see Details for full matches</span>";
+        str += "<br><span class='more'>veja Detalhes para correspondências completas</span>";
       }
 
       return str;
@@ -22921,44 +22921,44 @@ var regexr = (function () {
   };
   Reference.UNICODE_CATEGORIES = {
     // from: http://www.pcre.org/original/doc/html/pcrepattern.html
-    "C": "Other",
-    "Cc": "Control",
-    "Cf": "Format",
-    "Cn": "Unassigned",
-    "Co": "Private use",
-    "Cs": "Surrogate",
-    "L": "Letter",
-    "L&": "Any letter ",
-    "Ll": "Lower case letter",
-    "Lm": "Modifier letter",
-    "Lo": "Other letter",
-    "Lt": "Title case letter",
-    "Lu": "Upper case letter",
-    "M": "Mark",
-    "Mc": "Spacing mark",
-    "Me": "Enclosing mark",
-    "Mn": "Non-spacing mark",
-    "N": "Number",
-    "Nd": "Decimal number",
-    "Nl": "Letter number",
-    "No": "Other number",
-    "P": "Punctuation",
-    "Pc": "Connector punctuation",
-    "Pd": "Dash punctuation",
-    "Pe": "Close punctuation",
-    "Pf": "Final punctuation",
-    "Pi": "Initial punctuation",
-    "Po": "Other punctuation",
-    "Ps": "Open punctuation",
-    "S": "Symbol",
-    "Sc": "Currency symbol",
-    "Sk": "Modifier symbol",
-    "Sm": "Mathematical symbol",
-    "So": "Other symbol",
-    "Z": "Separator",
-    "Zl": "Line separator",
-    "Zp": "Paragraph separator",
-    "Zs": "Space separator"
+    "C": "Outro",
+    "Cc": "Controle",
+    "Cf": "Formato",
+    "Cn": "Não atribuído",
+    "Co": "Uso privado",
+    "Cs": "Substituto",
+    "L": "Letra",
+    "L&": "Qualquer letra ",
+    "Ll": "Letra minúscula",
+    "Lm": "Modificador de letra",
+    "Lo": "Outra letra",
+    "Lt": "Letra com capitalização de título",
+    "Lu": "Letra Maiúscula",
+    "M": "Marca",
+    "Mc": "Marca de espaçamento",
+    "Me": "Marca de fechamento",
+    "Mn": "Marca sem espaçamento",
+    "N": "Número",
+    "Nd": "Número decimal",
+    "Nl": "Número da letra",
+    "No": "Outro número",
+    "P": "Pontuação",
+    "Pc": "Pontuação do conector",
+    "Pd": "Pontuação do traço",
+    "Pe": "Pontuação de fechamento",
+    "Pf": "Pontuação final",
+    "Pi": "Pontuação inicial",
+    "Po": "Outra pontuação",
+    "Ps": "Pontuação aberta",
+    "S": "Símbolo",
+    "Sc": "Símbolo monetário",
+    "Sk": "Símbolo modificador",
+    "Sm": "Símbolo matemático",
+    "So": "Outro símbolo",
+    "Z": "Separador",
+    "Zl": "Separador de linhas",
+    "Zp": "Separador de parágrafos",
+    "Zs": "Separador de espaço"
   };
 
   /*
@@ -22983,32 +22983,32 @@ var regexr = (function () {
   // TODO: rewrite to use multiline template literals?
   let reference_content = {},
       o = reference_content;
-  o.label = "RegEx Reference";
+  o.label = "Referência do RegEx";
   o.id = "reference";
-  o.search = true, o.desc = `Information on all of the tokens available to create regular expressions.
-	<p>Double-click an item in the list to insert it into your Expression.</p>
-	<p>Click the arrow beside an example to load it.</p>`;
+  o.search = true, o.desc = `Informações sobre todos os tokens disponíveis para criar expressões regulares.
+	<p>Clique duas vezes em um item da lista para inseri-lo na sua Expressão.</p>
+	<p>Clique na seta ao lado de um exemplo para carregá-lo.</p>`;
   o.kids = [{
-    label: "Character classes",
+    label: "Classes de caracteres",
     id: "charclasses",
-    desc: "Character classes match a character from a specific set. There are a number of predefined character classes and you can also define your own sets.",
+    desc: "As classes de caracteres fazem uma correspondência a um caractere de um conjunto específico. Existem várias classes de predefinidas, além disso você também pode definir seus próprios conjuntos.",
     kids: [{
       id: "set",
-      label: "character set",
-      desc: "Match any character in the set.",
+      label: "conjunto de caracteres",
+      desc: "Corresponde a qualquer caractere no conjunto.",
       example: ["[aeiou]", "glib jocks vex dwarves!"],
       token: "[ABC]"
     }, {
       id: "setnot",
-      label: "negated set",
-      desc: "Match any character that is not in the set.",
+      label: "conjunto negado",
+      desc: "Corresponde a qualquer caractere que não esteja no conjunto.",
       example: ["[^aeiou]", "glib jocks vex dwarves!"],
       token: "[^ABC]"
     }, {
       id: "range",
-      tip: "Matches a character in the range {{getChar(prev)}} to {{getChar(next)}} (char code {{prev.code}} to {{next.code}}). {{getInsensitive()}}",
+      tip: "Corresponde a qualquer caractere que esteja entre {{getChar(prev)}} e {{getChar(next)}} (código do caractere {{prev.code}} até {{next.code}}). {{getInsensitive()}}",
       example: ["[g-s]", "abcdefghijklmnopqrstuvwxyz"],
-      desc: "Matches a character having a character code between the two specified characters inclusive.",
+      desc: "Corresponde a um caractere com um código de caractere entre os dois caracteres especificados, inclusive.",
       token: "[A-Z]"
     }, {
       id: "posixcharclass",
@@ -23573,33 +23573,32 @@ var regexr = (function () {
     }]
   };
   o.errors = {
-    groupopen: "Unmatched opening parenthesis.",
-    groupclose: "Unmatched closing parenthesis.",
-    setopen: "Unmatched opening square bracket.",
-    rangerev: "Range values reversed. Start char code is greater than end char code.",
-    quanttarg: "Invalid target for quantifier.",
-    quantrev: "Quantifier minimum is greater than maximum.",
-    esccharopen: "Dangling backslash.",
-    esccharbad: "Unrecognized or malformed escape character.",
-    unicodebad: "Unrecognized unicode category or script.",
-    posixcharclassbad: "Unrecognized POSIX character class.",
-    posixcharclassnoset: "POSIX character class must be in a character set.",
-    notsupported: "The \"{{~getLabel()}}\" feature is not supported in this flavor of RegEx.",
-    fwdslash: "Unescaped forward slash. This may cause issues if copying/pasting this expression into code.",
-    esccharbad: "Invalid escape sequence.",
-    servercomm: "An error occurred while communicating with the server.",
-    extraelse: "Extra else in conditional group.",
-    unmatchedref: "Reference to non-existent group \"{{name}}\".",
-    modebad: "Unrecognized mode flag \"<code>{{errmode}}</code>\".",
-    badname: "Group name can not start with a digit.",
-    dupname: "Duplicate group name.",
-    branchreseterr: "<b>Branch Reset.</b> Results will be ok, but RegExr's parser does not number branch reset groups correctly. Coming soon!",
-    timeout: "The expression took longer than 250ms to execute.",
+    groupopen: "Parêntese de abertura sem correspondente.",
+    groupclose: "Parêntese de fechamento sem correspondente.",
+    setopen: "Colchete de abertura sem correspondente.",
+    rangerev: "Valores de alcance invertidos. O código inicial é superior ao código final.",
+    quanttarg: "Alvo inválido para o quantificador.",
+    quantrev: "O quantificador mínimo é maior que o máximo.",
+    esccharopen: "Barra pendente.",
+    esccharbad: "Caractere de escape não reconhecido ou digitado errado.",
+    unicodebad: "Categoria ou script unicode não reconhecido.",
+    posixcharclassbad: "Classe de caractere POSIX não reconhecida.",
+    posixcharclassnoset: "A classe de caractere POSIX deve estar em um conjunto de caracteres.",
+    notsupported: "O recurso \"{{~getLabel()}}\" não é suportado nesse mecânismo do RegEx.",
+    fwdslash: "Barra invertida sem escape. Isso pode causar problemas se copiar/colar esta expressão no seu código.",
+    esccharbad: "Sequência de escape inválida.",
+    servercomm: "Ocorreu um erro na comunicação com o servidor.",
+    extraelse: "Extra else em um grupo condicional.",
+    unmatchedref: "Referência a um grupo inexistente \"{{name}}\".",
+    modebad: "Sinalizador de modo não reconhecido \"<code>{{errmode}}</code>\".",
+    badname: "O nome do grupo não pode começar com um dígito.",
+    dupname: "Nome de grupo duplicado.",
+    branchreseterr: "<b>Redefinição de ramificação.</b> O resultado será, OK, mas o analisador do RegEx não numera os grupos de redefinição de ramificação corretamente. Em breve!",
+    timeout: "A expressão levou mais de 250ms para ser executada.",
     // TODO: can we couple this to the help content somehow?
     // warnings:
-    jsfuture: "The \"{{~getLabel()}}\" feature may not be supported in all browsers.",
-    infinite: "The expression can return empty matches, and may match infinitely in some use cases." // TODO: can we couple this to the help content somehow?
-
+    jsfuture: "O recurso \"{{~getLabel()}}\" pode não ser suportado em todos os navegadores.",
+    infinite: "A expressão pode retornar correspondências vazias e pode corresponder infinitamente em alguns casos de uso." // TODO: can we couple this to the help content somehow?
   };
   /*
   classes:
@@ -24187,7 +24186,7 @@ var regexr = (function () {
         };
       }
 
-      window.onbeforeunload = e => this.unsaved ? "You have unsaved changes." : null;
+      window.onbeforeunload = e => this.unsaved ? "Você possui alterações não salvas." : null;
 
       this.resetUnsaved();
       setTimeout(() => this._initAds(), 100);
@@ -24268,7 +24267,7 @@ var regexr = (function () {
 
     load(state, warn = true) {
       if (warn === true) {
-        warn = "You have unsaved changes. Continue without saving?";
+        warn = "Você possui alterações não salvas. Continuar sem salvar?";
       }
 
       if (warn && this.unsaved && !confirm(warn)) {
