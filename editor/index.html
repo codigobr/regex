@@ -42,6 +42,9 @@
           display: none;
         }
       }
+      .hide-always {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -168,7 +171,9 @@
           </svg>
         </div>
         <ul class="file">
-          <li class="save disabled"><span class="action">Salvar</span> <span class="savekey">(--)</span></li>
+          <span class="hide-always">
+            <li class="save disabled"><span class="action">Salvar</span> <span class="savekey">(--)</span></li>
+          </span>
           <li class="new">Novo</li>
         </ul>
         <ul class="etc">
@@ -180,17 +185,19 @@
             </svg>
           </li>
           <li class="by">por <a href="http://codigo.net.br">código</a></li>
-          <li class="github"><a href="http://github.com/codigobr/regex">GitHub</a></li>
+          <!-- <li class="github"><a href="http://github.com/codigobr/regex">GitHub</a></li> -->
 
-          <!-- Opção de logar desabilitada, já que não tem o lado do server ainda, tenho que alter o js -->
-          <li class="signin">
-            <a>
-              <svg class="icon user inline">
-                <use xlink:href="#user"></use>
-              </svg>
-              <span class="label">Sign In</span>
-            </a>
-          </li>
+          <!-- Opção de logar desabilitada, já que não tem o lado do server ainda -->
+          <span class="hide-always">
+            <li class="signin">
+              <a>
+                <svg class="icon user inline">
+                  <use xlink:href="#user"></use>
+                </svg>
+                <span class="label">Sign In</span>
+              </a>
+            </li>
+          </span>
 
         </ul>
       </header>
@@ -285,11 +292,13 @@
                     <use xlink:href="#dropdown"></use>
                   </svg>
                 </div>
-                <div class="button flags">
-                  <svg class="icon">
-                    <use xlink:href="#copy"></use>
-                  </svg>
-                  <span class="label hide-small">Copiar</span>
+                <div class="hide-always">
+                  <div class="button flags">
+                    <svg class="icon">
+                      <use xlink:href="#copy"></use>
+                    </svg>
+                    <span class="label hide-small">Copiar</span>
+                  </div>
                 </div>
               </div>
             </header>

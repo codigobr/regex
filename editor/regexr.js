@@ -14685,7 +14685,7 @@ var regexr = (function () {
                 this._action = action;
 
                 if (this._action !== 'copy' && this._action !== 'cut') {
-                  throw new Error('Invalid "action" value, use either "copy" or "cut"');
+                  throw new Error('Valor de "ação" inválido, use "copiar" ou "recortar"');
                 }
               },
               get: function get() {
@@ -14697,16 +14697,16 @@ var regexr = (function () {
                 if (target !== undefined) {
                   if (target && (typeof target === 'undefined' ? 'undefined' : _typeof(target)) === 'object' && target.nodeType === 1) {
                     if (this.action === 'copy' && target.hasAttribute('disabled')) {
-                      throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
+                      throw new Error('Atributo "destino" inválido. Por favor, use o atributo "somente leitura" em vez do atributo "desativado"');
                     }
 
                     if (this.action === 'cut' && (target.hasAttribute('readonly') || target.hasAttribute('disabled'))) {
-                      throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
+                      throw new Error('Atributo "destino" inválido. Você não pode recortar texto de elementos com atributos "somente leitura" ou "desativado"');
                     }
 
                     this._target = target;
                   } else {
-                    throw new Error('Invalid "target" value, use a valid Element');
+                    throw new Error('Valor "destino" inválido, use um elemento válido');
                   }
                 }
               },
@@ -14756,7 +14756,7 @@ var regexr = (function () {
 
           function _classCallCheck(instance, Constructor) {
             if (!(instance instanceof Constructor)) {
-              throw new TypeError("Cannot call a class as a function");
+              throw new TypeError("Não é possível chamar uma classe como uma função");
             }
           }
 
@@ -14780,7 +14780,7 @@ var regexr = (function () {
 
           function _possibleConstructorReturn(self, call) {
             if (!self) {
-              throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+              throw new ReferenceError("isso não foi inicializado - super() não foi chamado");
             }
 
             return call && (typeof call === "object" || typeof call === "function") ? call : self;
@@ -14788,7 +14788,7 @@ var regexr = (function () {
 
           function _inherits(subClass, superClass) {
             if (typeof superClass !== "function" && superClass !== null) {
-              throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+              throw new TypeError("A expressão Super deve ser nula ou uma função, não uma " + typeof superClass);
             }
 
             subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -19972,6 +19972,7 @@ var regexr = (function () {
       this._emptyCount = matches ? matches.reduce((v, o) => v + (o.l ? 0 : 1), 0) : 0;
     }
 
+    // As mensagens geradas automaticamente pelo motor do JS eu não vou traduzir
     _errorText(err) {
       return err.message || app.reference.getError(err);
     }
@@ -20632,7 +20633,7 @@ var regexr = (function () {
     _update() {
       let o = app.result && app.result.tool,
           result = o && o.result;
-      this.output.value = result || "no result";
+      this.output.value = result || "nenhum resultado";
     }
 
     _handleEvent(evt) {
@@ -22755,7 +22756,6 @@ var regexr = (function () {
     getError(error, token) {
       let errId = error && error.id;
       let str = this._content.errors[errId] || "nenhum documento para o erro='" + errId + "'";
-
       if (token) {
         str = this.fillTags(str, token, this, 20);
       }
