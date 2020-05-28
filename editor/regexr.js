@@ -543,7 +543,7 @@ var regexr = (function () {
       n -= doc.first;
 
       if (n < 0 || n >= doc.size) {
-        throw new Error("There is no line " + (n + doc.first) + " in the document.");
+        throw new Error("Não existe a linha " + (n + doc.first) + " no documento.");
       }
 
       var chunk = doc;
@@ -18814,13 +18814,13 @@ var regexr = (function () {
     },
     docs: {
       "escoctal": {
-        ext: "+<p>The syntax <code>\\o{FFF}</code> is also supported.</p>"
+        ext: "+<p>A sintaxe <code>\\o{FFF}</code> também é suportada.</p>"
       },
       "numref": {
-        ext: "<p>There are multiple syntaxes for this feature: <code>\\1</code> <code>\\g1</code> <code>\\g{1}</code>.</p>" + "<p>The latter syntaxes support relative values preceded by <code>+</code> or <code>-</code>. For example <code>\\g-1</code> would match the group preceding the reference.</p>"
+        ext: "<p>Existem várias sintaxes para esse recurso: <code>\\1</code> <code>\\g1</code> <code>\\g{1}</code>.</p>" + "<p>As últimas sintaxes suportam valores relativos precedidos por <code>+</code> ou <code>-</code>. Por exemplo, <code>\\g-1</code> corresponderia ao grupo anterior à referência.</p>"
       },
       "lazy": {
-        ext: "+<p>This behaviour is reversed by the ungreedy (<code>U</code>) flag/modifier.</p>"
+        ext: "+<p>Esse comportamento é revertido pelo sinalizador <b>não ganancioso</b>(<code>U</code>).</p>"
       }
     }
   };
@@ -19014,7 +19014,7 @@ var regexr = (function () {
       },
       // remove other syntaxes.
       "unicodecat": {
-        ext: "<p>Requires the <code>u</code> flag.</p>" + "<p>For a list of values, see this <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes'>MDN page</a>.</p>"
+        ext: "<p>Requer o sinalizador <code>u</code>.</p>" + "<p>Para uma lista de valores, consulte este <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes'>página da MDN</a>.</p>"
       } // notunicodecat, unicodescript, notunicodescript are copied from unicodecat below.
 
     }
@@ -19335,8 +19335,8 @@ var regexr = (function () {
       }
 
       let err = errs.length === 1 && errs[0].error;
-      let str = err ? app.reference.getError(err, errs[0]) : "Problems in the Expression are underlined in <span class='exp-error'>red</span>. Roll over them for details.";
-      let label = err && err.warning ? "WARNING" : "PARSE ERROR";
+      let str = err ? app.reference.getError(err, errs[0]) : "Os problemas na expressão estão sublinhados em <span class='exp-error'>vermelho</span>. Passe o mouse sobre eles para obter detalhes.";
+      let label = err && err.warning ? "ATENÇÃO" : "ERRO DE ANÁLISE";
       tt.showOn("error", "<span class='error'>" + label + ":</span> " + str, this.errorEl);
     }
 
@@ -19749,7 +19749,7 @@ var regexr = (function () {
       return {
         id: UID.id,
         name: "",
-        text: "Enter your test text here.",
+        text: "Digite o teste aqui",
         type: "any"
       };
     } // private methods:
@@ -19760,8 +19760,10 @@ var regexr = (function () {
       this.resultEl.addEventListener("mouseenter", evt => this._mouseResult(evt));
       this.resultEl.addEventListener("mouseleave", evt => this._mouseResult(evt));
       this.modeListEl = DOMUtils.query("> header .modelist", el);
+      let pt_br = {Text:"Texto", Tests:"Testes"};
       let data = ["Text", "Tests"].map(val => ({
-        label: val,
+        // label: val,
+        label: pt_br[val],
         id: val.toLowerCase()
       }));
       this.modeList = new List(this.modeListEl, {
@@ -19989,14 +19991,14 @@ var regexr = (function () {
     _initTestUI(el) {
       const types = [{
         id: "all",
-        label: "Match Full"
+        label: "Corresponder Completamente"
       }, {
         id: "any",
-        label: "Match Any"
+        label: "Corresponder Qualquer"
       }, // {id:"start", label:"Match Start"},
       {
         id: "none",
-        label: "Match None"
+        label: "Corresponder Nenhum"
       }];
       this.typeLabels = types.reduce((o, t) => {
         o[t.id] = t.label;
@@ -20032,7 +20034,7 @@ var regexr = (function () {
           l = data.length;
 
       if (!data || !l) {
-        return this._showResult("No tests.");
+        return this._showResult("Nenhum Teste.");
       }
 
       let matches = result.matches.reduce((o, t) => {
@@ -20069,9 +20071,9 @@ var regexr = (function () {
       this._testMatches = matches;
 
       if (fails) {
-        this._showResult(fails + " FAILED", "fail");
+        this._showResult(fails + " FALHOU", "fail");
       } else {
-        this._showResult("PASSED", "pass");
+        this._showResult("APROVADO", "pass");
       }
 
       this._updateSelTest();
@@ -20117,7 +20119,7 @@ var regexr = (function () {
     _updateTestHeader(o, el, edit) {
       let nameFld = DOMUtils.query("header .name", el);
       nameFld.value = o.name || "";
-      nameFld.placeholder = o.text && !edit ? o.text.substr(0, 100) : "Untitled Test";
+      nameFld.placeholder = o.text && !edit ? o.text.substr(0, 100) : "Teste Sem Título";
       let typeLbl = DOMUtils.query("header .button.type .label", el);
       typeLbl.innerText = this.typeLabels[o.type];
     }
@@ -20288,11 +20290,11 @@ var regexr = (function () {
       this._divs = [];
 
       if (!token || token.next.type === "close") {
-        el.innerHTML = "<span class='desc'>Enter an Expression above and it will be explained here.</span>";
+        el.innerHTML = "<span class='desc'>Digite uma Expressão acima e ela será explicada aqui.</span>";
         return;
       }
 
-      el.innerHTML = "<span class='desc'>Roll-over elements below to highlight in the Expression above. Click to open in Reference.</span>";
+      el.innerHTML = "<span class='desc'>Passe o mouse sobre os elementos abaixo para realçar na Expressão acima. Clique para abrir na <b>Referência</b>.</span>";
 
       while ((token = token.next) && token.type !== "close") {
         if (token.proxy || token.open && token.open.proxy) {
@@ -20333,7 +20335,7 @@ var regexr = (function () {
           }
 
           if (token.depth > 3) {
-            div.innerHTML = "So... you wanted to see what would happen if you just kept nesting groups, eh? Well, this is it." + " I was going to reward your curiosity with a RegEx joke, but a quick search on google reveals that not even" + " the collective wisdom of the internet can make regular expressions funny. Well, except the whole 'now you've got two problems'" + " shtick, but you've probably heard that one already. Wasn't really worth the effort, was it?";
+            div.innerHTML = "Então... você queria ver o que aconteceria se continuasse aninhando grupos, não é? Bem, é isso." + " Eu recompensaria sua curiosidade com uma piada do RegEx, mas uma rápida pesquisa no google revela que nem mesmo" + " a sabedoria coletiva da internet pode tornar engraçadas as expressões regulares. Bem, exceto que 'a curiosidade matou o gato'" + " bom, mas você provavelmente já ouviu essa também. O esforço valeu a pena?";
             token = token.close.prv;
 
             this._divs.push(div);
@@ -20478,7 +20480,7 @@ var regexr = (function () {
 
     _update() {
       DOMUtils.empty(this.el);
-      DOMUtils.create("div", "desc", "Click a <span class='match'>match</span> above to display match &amp; group details. Mouse over a <code>Group</code> row to highlight it in the Expression.", this.el);
+      DOMUtils.create("div", "desc", "Clique em uma <span class='match'>correspondência</span> acima para mostrar os detalhes. Passe o mouse sobre uma linha de <code>Grupo</code> abaixo para realçá-lo no painel <code>Expressão Regular</code>.", this.el);
 
       this._addMatch(app.text.selectedMatch, app.text.value);
     }
@@ -20497,7 +20499,7 @@ var regexr = (function () {
 
       let groupTokens = app.expression.lexer.captureGroups;
       let tableEl = DOMUtils.create("table", null, null, this.el);
-      let matchEl = DOMUtils.create("tr", "match", "<td>Match " + match.num + "</td><td>" + this._getRangeStr(match) + "</td><td></td>", tableEl);
+      let matchEl = DOMUtils.create("tr", "match", "<td>Correspondência " + match.num + "</td><td>" + this._getRangeStr(match) + "</td><td></td>", tableEl);
 
       if (l) {
         let inGroups = [],
@@ -20535,7 +20537,7 @@ var regexr = (function () {
           }
 
           let val = "<span" + (ext ? " class='group-" + num % 6 + "'" : "") + ">" + this._getMatchVal(group, textVal) + "</span>";
-          let label = token.name ? "'" + token.name + "'" : "Group " + num;
+          let label = token.name ? "'" + token.name + "'" : "Grupo " + num;
           let tr = DOMUtils.create("tr", "group", "<td>" + label + "</td><td>" + this._getRangeStr(group) + "</td><td>" + val + "</td>", tableEl);
           tr.token = token;
           tr.addEventListener("mouseover", this._handleMouseEvent);
@@ -20546,7 +20548,7 @@ var regexr = (function () {
           extStr += Utils.htmlSafe(textVal.substring(lastIndex, me));
         }
       } else {
-        DOMUtils.create("tr", "nogroup", "<td colspan='3'>No groups.</td>", tableEl);
+        DOMUtils.create("tr", "nogroup", "<td colspan='3'>Nenhum grupo.</td>", tableEl);
       }
 
       DOMUtils.query("td:last-child", matchEl).innerHTML = extStr || matchVal;
@@ -20554,7 +20556,7 @@ var regexr = (function () {
 
     _getMatchVal(match, str) {
       let val = match.s || (match.i === undefined ? "" : str.substr(match.i, match.l));
-      return val ? Utils.htmlSafe(val) : "<em>&lt;empty&gt;</em>";
+      return val ? Utils.htmlSafe(val) : "<em>&lt;vazio&gt;</em>";
     }
 
     _getRangeStr(match) {
@@ -20899,8 +20901,10 @@ var regexr = (function () {
       this.contentEl = DOMUtils.query("> article > .content", el);
       this.resultEl = DOMUtils.query("> article > .inputtool > .result", el);
       this.toolListEl = DOMUtils.query(".toollist", this.headerEl);
+      let pt_br = {Replace:"Substituir", List:"Listar", Details:"Detalhar", Explain:"Explicar"};
       let data = ["Replace", "List", "Details", "Explain"].map(val => ({
-        label: val,
+        // label: val,
+        label: pt_br[val],
         id: val.toLowerCase()
       }));
       this.toolList = new List(this.toolListEl, {
@@ -21038,13 +21042,13 @@ var regexr = (function () {
           id: "replace",
           desc: "A ferramenta <b>Substituir</b> substitui as correspondências por uma sequência (texto) ou padrão especificado." + "<p>As correspondências no painel <b>Texto</b> são substituídas pela sequência de substituição e exibidas à medida que você digita.</p>" + "<p>Tokens de substituição e caracteres de escape são suportados, como <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Passe o mouse sobre os tokens ou consulte a <b>Referência do RegEx</b> para obter mais informações.</p>"
         }, {
-          label: "Lista",
+          label: "Listar",
           id: "list",
-          desc: "A ferramenta <b>Lista</b> mostra todas as correspondências encontradas." + "<p>Você pode especificar um simples delimitador (<code>,</code> or <code>\\n</code>), ou usar tokens de substituição para gerar relatórios mais avançados. Por exemplo, <code>$1\\n</code> listaria todos os resultados do grupo 1 (no mecanismo do JavaScript).</p>" + "<p>Caracteres escapados são suportados, como <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Passe o mouse sobre os tokens para obter informações.</p>"
+          desc: "A ferramenta <b>Listar</b> mostra todas as correspondências encontradas." + "<p>Você pode especificar um simples delimitador (<code>,</code> or <code>\\n</code>), ou usar tokens de substituição para gerar relatórios mais avançados. Por exemplo, <code>$1\\n</code> listaria todos os resultados do grupo 1 (no mecanismo do JavaScript).</p>" + "<p>Caracteres escapados são suportados, como <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>" + "<p>Passe o mouse sobre os tokens para obter informações.</p>"
         }, {
-          label: "Detalhes",
+          label: "Detalhar",
           id: "details",
-          desc: "A ferramenta <b>Detalhes</b> exibe o texto completo de uma correspondência e seus grupos de captura." + "<p>Clique em uma correspondência destacada no painel <b>Texto</b> para exibir os detalhes dessa correspondência.</p>" + "<p>Passe o mouse sobre uma linha do grupo para destacar esse grupo em sua <b>Expressão</b>.</p>"
+          desc: "A ferramenta <b>Detalhar</b> exibe o texto completo de uma correspondência e seus grupos de captura." + "<p>Clique em uma correspondência destacada no painel <b>Texto</b> para exibir os detalhes dessa correspondência.</p>" + "<p>Passe o mouse sobre uma linha do grupo para destacar esse grupo em sua <b>Expressão</b>.</p>"
         }, {
           label: "Explicar",
           id: "explain",
@@ -22590,7 +22594,8 @@ var regexr = (function () {
         }
       }
 
-      return token.modes ? `Case ${token.modes.i ? "in" : ""}sensitive.` : "";
+      // case111 = token.modes ? `Case ${token.modes.i ? "in" : ""}sensitive.` : "";
+      return token.modes ? `${token.modes.i ? "Não " : ""}Diferencia Capitalização.` : "";
     }
 
     getDotAll(token) {
@@ -22607,11 +22612,11 @@ var regexr = (function () {
     }
 
     getLazy(token) {
-      return token.modes.U ? "greedy" : "lazy";
+      return token.modes.U ? "ganancioso" : "preguiçoso";
     }
 
     getLazyFew(token) {
-      return token.modes.U ? "many" : "few";
+      return token.modes.U ? "máximo" : "mínimo";
     }
 
     getPHPVersion() {
@@ -23020,6 +23025,7 @@ var regexr = (function () {
       token: "[:alnum:]"
     }, {
       id: "dot",
+      label: "Ponto",
       tip: "Corresponde a qualquer caractere {{getDotAll()}}.",
       desc: "Corresponde a qualquer caractere, exceto quebras de linha..",
       ext: " Equivalente a <code>[^\\n\\r]</code>.",
@@ -23302,6 +23308,7 @@ var regexr = (function () {
       token: "(?>ABC)"
     }, {
       id: "define",
+      label: "Definir",
       desc: "Usado para definir grupos nomeados para uso como sub-rotinas sem incluí-los na correspondência.",
       ext: "<p>Por exemplo, <code>/A(?(DEFINE)(?'foo'Z))B\\g'foo'/</code> corresponderá a <code>ABZ</code>, porque o grupo <b>DEFINE</b> é ignorado na correspondência, exceto para definir a sub-rotina <code>foo</code> referenciada posteriormente com <code>\\g'foo'</code>.</p>",
       token: "(?(DEFINE)(?'foo'ABC))"
@@ -23321,7 +23328,7 @@ var regexr = (function () {
       token: "\\g'nome'"
     }]
   }, {
-    label: "Lookaround (Olhar em volta)",
+    label: "Lookaround (Pesquisar)",
     id: "lookaround",
     desc: "Lookaround permite encontrar um grupo antes (lookbehind) ou depois (lookahead) do seu padrão principal sem incluí-lo no resultado." + "<p>Lookarounds negativo especifica um grupo que NÃO pode ser encontrado antes ou depois do padrão.</p>",
     kids: [{
@@ -23359,11 +23366,13 @@ var regexr = (function () {
     desc: "Os quantificadores indicam que o token anterior deve corresponder um certo número de vezes. Por padrão, os quantificadores são gananciosos e corresponderão ao maior número de caracteres possível." + "<hr/>A alternância atua como um OR booleano, correspondendo a uma sequência ou outra.",
     kids: [{
       id: "plus",
+      label: "Sinal de Adição",
       desc: "Corresponde a 1 ou mais do token anterior.",
       example: ["b\\w+", "b be bel bele beleza"],
       token: "+"
     }, {
       id: "star",
+      label: "Asterisco",
       desc: "Corresponde a 0 ou mais do token anterior.",
       example: ["b\\w*", "b be bel bele beleza"],
       token: "*"
@@ -23376,12 +23385,13 @@ var regexr = (function () {
       token: "{1,3}"
     }, {
       id: "opt",
-      label: "opcional",
+      label: "Interrogação (opcional)",
       desc: "Corresponde a 0 ou 1 do token anterior, tornando-o opcional.",
       example: ["fac?to", "fato facto"],
       token: "?"
     }, {
       id: "lazy",
+      label: "Interrogação (preguiçoso)",
       tip: "Torna o quantificador anterior {{getLazy()}}, fazendo com que ele corresponda ao {{getLazyFew()}} de caracteres possível.",
       desc: "Torna o quantificador anterior <b>preguiçoso</b>, fazendo com que ele corresponda ao mínimo de caracteres possível.",
       ext: " Por padrão, os quantificadores são gananciosos e corresponderão ao máximo de caracteres possível.",
@@ -23389,6 +23399,7 @@ var regexr = (function () {
       token: "?"
     }, {
       id: "possessive",
+      label: "Possessivo",
       desc: "Torna possessivo o quantificador anterior. Ele corresponderá ao maior número possível de caracteres e não os liberará para corresponder aos tokens subsequentes.",
       ext: "<p>Por exemplo, <code>/.*a/</code> encontraria <code>aaa</code>, mas <code>/.*+a/</code> não, porque o ponto de repetição corresponderia e não liberaria o último caractere <code>a</code>.</p>",
       token: "+"
@@ -23406,10 +23417,12 @@ var regexr = (function () {
     desc: "Tokens que não se encaixam em nenhum outro lugar.",
     kids: [{
       id: "comment",
+      label: "Comentário",
       desc: "Permite inserir um comentário em sua expressão que é ignorado ao encontrar uma correspondência.",
       token: "(?#foo)"
     }, {
       id: "conditional",
+      label: "Condicional",
       desc: "Corresponde condicionalmente a uma das duas opções, com base no fato de uma pesquisa ser correspondida.",
       ext: "<p>Por exemplo, <code>/(?(?=a)ab|..)/</code> encontrará <code>ab</code> e <code>zx</code> mas não corresponderá <code>ax</code>, porque se o primeiro caractere corresponde à condição <code>a</code>, ele avalia o padrão <code>ab</code>.</p>" + "<p>Qualquer lookaround pode ser usado como condicional. Um lookahead iniciará a correspondência subsequente no início da condição, um lookbehind a iniciará depois.</p>",
       token: "(?(?=A)B|C)"
@@ -23421,6 +23434,7 @@ var regexr = (function () {
       token: "(?(1)B|C)"
     }, {
       id: "recursion",
+      label: "Recursão",
       desc: "Tenta encontrar novamente a expressão completa usando a posição atual.",
       ext: "<p>Por exemplo, <code>/a(?R)?b/</code> corresponderá a qualquer número de <code>a</code> seguido pelo mesmo número de <code>z</code>: o texto completo de <code>az</code> ou <code>aaaazzzz</code>, mas não <code>azzz</code>.</p>" + "<p>Existem várias sintaxes para esse recurso: </p><p><code>(?R)</code> <code>(?0)</code> <code>\\g<0></code> <code>\\g'0'</code></p>",
       token: "(?R)"
@@ -23497,29 +23511,35 @@ var regexr = (function () {
       token: "g"
     }, {
       id: "multiline",
+      label: "multilinhas",
       tip: "Âncoras de Início/Fim (<b>^</b>/<b>$</b>) encontrará o início/fim de uma linha.",
       desc: "Quando o sinalizador de múltiplas linhas está ativado, âncoras de início (<code>^</code>) e fim (<code>$</code>) corresponderão ao começo e o fim da linha, em vez do início e do fim de uma string." + "<p>Observe que padrões como <code>/^[\\s\\S]+$/m</code> pode retornar correspondências que abrangem várias linhas porque as âncoras corresponderão ao início/fim de <b>qualquer</b> linha.</p>",
       token: "m"
     }, {
       id: "unicode",
+      label: "Unicode",
       tip: "Habilita o escape <code>\\x{FFFFF}</code> unicode.",
       desc: "Quando o sinalizador unicode está ativado, você pode usar escapes unicode estendidos na forma de <code>\\x{FFFFF}</code>." + "<p>Também torna outros escapes mais estritos, por exemplo: (ex. <code>\\j</code>) geraria um erro.</p>",
       token: "u"
     }, {
       id: "sticky",
+      label: "Pegajoso",
       desc: "A expressão corresponderá apenas a partir da posição lastIndex e ignorará o sinalizador global (<code>g</code>) se estiver definido.",
       ext: " Como cada pesquisa no editor de RegEx é discreta, esse sinalizador não impacta os resultados exibidos.",
       token: "y"
     }, {
       id: "dotall",
+      label: "Tudo",
       desc: "Ponto (<code>.</code>) corresponderá a qualquer caractere, incluindo nova linha.",
       token: "s"
     }, {
       id: "extended",
+      label: "estendido",
       desc: "Caracteres de espaço em branco literais são ignorados, exceto nos conjuntos de caracteres.",
       token: "x"
     }, {
       id: "ungreedy",
+      label: "Não Ganancioso",
       tip: "Torna os quantificadores <b>não gananciosos (preguiçosos)</b> por padrão.",
       desc: "Torna os quantificadores <b>não gananciosos (preguiçosos)</b> por padrão. Quantificadores seguidos por <code>?</code> se tornarão ganancioso.",
       token: "U"
@@ -23553,13 +23573,15 @@ var regexr = (function () {
       tip: "Indica o final de uma expressão regular e o início dos sinalizadores de expressão."
     }, {
       id: "condition",
+      label: "Condição",
       tip: "A solução a ser encontrada na resolução da instrução condicional anexa. Veja 'condicional' na Referência para mais informações."
     }, {
       id: "conditionalelse",
-      label: "condicional else",
+      label: "Condicional Else",
       tip: "Delimita a parte 'else' do condicional."
     }, {
       id: "ERROR",
+      label: "Erro",
       tip: "Erros na expressão estão sublinhados em vermelho. Passe o mouse sobre os erros para obter mais informações."
     }, {
       id: "PREG_INTERNAL_ERROR",
