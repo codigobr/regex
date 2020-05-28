@@ -19239,7 +19239,7 @@ var regexr = (function () {
       const template = DOMUtils.template`<svg class="inline check icon"><use xlink:href="#check"></use></svg> ${"label"}`;
       let flavorData = app.flavor.profiles.map(o => ({
         id: o.id,
-        label: o.label + " (" + (o.browser ? "Browser" : "Server") + ")"
+        label: o.label + " (" + (o.browser ? "Navegador" : "Servidor") + ")"
       }));
       this.flavorBtn = DOMUtils.query("section.expression .button.flavor", el);
       this.flavorEl = DOMUtils.query("#library #tooltip-flavor");
@@ -19860,9 +19860,9 @@ var regexr = (function () {
           text;
 
       if (l && result && !result.error) {
-        text = l + " match" + (l > 1 ? "es" : "") + (this._emptyCount ? "*" : "");
+        text = l + " correspondência" + (l > 1 ? "s" : "") + (this._emptyCount ? "*" : "");
       } else if (!result || !result.error) {
-        text = "No match";
+        text = "Nehuma correspondência";
       }
 
       this._showResult(text);
@@ -19875,7 +19875,7 @@ var regexr = (function () {
 
       if (result && result.error) {
         if (!text) {
-          text = result.error.warning ? "WARNING" : "ERROR";
+          text = result.error.warning ? "ATENÇÃO" : "ERRO";
         }
 
         DOMUtils.addClass(el, "error");
@@ -19931,33 +19931,33 @@ var regexr = (function () {
       }
 
       if (err && !err.warning) {
-        str = "<span class='error'>EXEC ERROR:</span> " + this._errorText(err);
+        str = "<span class='error'>ERRO DE EXEC:</span> " + this._errorText(err);
       } else {
         if (err && err.warning) {
-          str = "<span class='error warning'>WARNING:</span> " + this._errorText(err) + "<hr>";
+          str = "<span class='error warning'>ATENÇÃO:</span> " + this._errorText(err) + "<hr>";
         }
 
         let l = this._tests.length;
 
         if (this.mode === "tests") {
           if (this._tests.length === 0) {
-            str += "Use the 'Add Test' button to create a new test.";
+            str += "Use o botão 'Adicionar Teste' para criar um novo teste.";
           } else if (this._testFails) {
-            str += this._testFails + " out of " + l + " tests failed.";
+            str += this._testFails + " de " + l + " testes falharam.";
           } else {
-            str += "All " + l + " tests passed.";
+            str += "Todos os " + l + " testes foram bem sucedidos.";
           }
         } else {
-          str += (l || "No") + " match" + (l > 1 ? "es" : "") + " found in " + this.value.length + " characters";
-          str += this._emptyCount ? ", including " + this._emptyCount + " empty matches (* not displayed)." : ".";
+          str += (l || "Nenhuma") + " correspondência" + (l > 1 ? "s" : "") + " encontrada em " + this.value.length + " caracteres";
+          str += this._emptyCount ? ", incluindo " + this._emptyCount + " correspondências vazias (* não mostradas)." : ".";
           let cm = this.editor,
               sel = cm.listSelections()[0],
               pos = sel.head;
           let i0 = cm.indexFromPos(pos),
               i1 = cm.indexFromPos(sel.anchor),
               range = Math.abs(i0 - i1);
-          str += "<hr>Insertion point: line " + pos.line + ", col " + pos.ch + ", index " + i0;
-          str += range > 0 ? " (" + range + " character" + (range === 1 ? "" : "s") + " selected)" : "";
+          str += "<hr>Ponto de inserção: linha " + pos.line + ", coluna " + pos.ch + ", índice " + i0;
+          str += range > 0 ? " (" + range + " caractere" + (range === 1 ? "" : "s") + " selecionados)" : "";
         }
       }
 
@@ -21714,7 +21714,7 @@ var regexr = (function () {
       DOMUtils.toggleClass([this.forkBtn, this.hForkBtn], "disabled", !this._canFork());
       DOMUtils.toggleClass(this.saveBtn, "disabled", !this._canSave());
       DOMUtils.toggleClass(this.hSaveBtn, "disabled", !this._canSave() && isOwned);
-      DOMUtils.query(".action", this.hSaveBtn).innerText = isOwned ? "Save" : "Fork";
+      DOMUtils.query(".action", this.hSaveBtn).innerText = isOwned ? "Salvar" : "Fork";
 
       if (!isOwned) {
         text = "Esse padrão foi criado por '" + (o.author || "[anônimo]") + "'.";
@@ -22359,7 +22359,7 @@ var regexr = (function () {
       this._showListMsg();
     }
 
-    _showListMsg(msg = "Loading...") {
+    _showListMsg(msg = "Carregando...") {
       this.listEl.innerHTML = "<li class='loading'>" + msg + "</li>";
     }
 
@@ -23006,518 +23006,522 @@ var regexr = (function () {
       token: "[^ABC]"
     }, {
       id: "range",
+      label: "Alcance",
       tip: "Corresponde a qualquer caractere que esteja entre {{getChar(prev)}} e {{getChar(next)}} (código do caractere {{prev.code}} até {{next.code}}). {{getInsensitive()}}",
       example: ["[g-s]", "abcdefghijklmnopqrstuvwxyz"],
       desc: "Corresponde a um caractere com um código de caractere entre os dois caracteres especificados, inclusive.",
       token: "[A-Z]"
     }, {
       id: "posixcharclass",
-      tip: "Matches any character in the '{{value}}' POSIX class.",
-      label: "POSIX class",
-      desc: "Matches any character in the specified POSIX class. Must be in a character set. For example, <code>[[:alnum:]$]</code> will match alphanumeric characters and <code>$</code>.",
-      ext: "<p>For a list of classes, see the <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE spec</a>.</p>",
+      tip: "Corresponde a qualquer caractere '{{value}}' na classe POSIX.",
+      label: "classe POSIX",
+      desc: "Corresponde a qualquer caractere na classe POSIX especificada. Deve estar em um conjunto de caracteres. Por exemplo, <code>[[:alnum:]$]</code> coincidirá com caracteres alfanuméricos e com o <code>$</code>.",
+      ext: "<p>Para uma lista de classes, consulte o spec do <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE</a>.</p>",
       token: "[:alnum:]"
     }, {
       id: "dot",
-      tip: "Matches any character {{getDotAll()}}.",
-      desc: "Matches any character except linebreaks.",
-      ext: " Equivalent to <code>[^\\n\\r]</code>.",
+      tip: "Corresponde a qualquer caractere {{getDotAll()}}.",
+      desc: "Corresponde a qualquer caractere, exceto quebras de linha..",
+      ext: " Equivalente a <code>[^\\n\\r]</code>.",
       example: [".", "glib jocks vex dwarves!"],
       token: "."
     }, {
       id: "matchanyset",
-      label: "match any",
-      desc: "A character set that can be used to match any character, including line breaks, without the dotall flag (<code>s</code>)." + "<p>An alternative is <code>[^]</code>, but it is not supported in all browsers.</p>",
+      label: "corresponde a qualquer",
+      desc: "Um conjunto de caracteres que pode ser usado para corresponder a qualquer caractere, incluindo quebras de linha, sem o sinalizador <b>dotall</b> (<code>s</code>)." + "<p>Uma alternativa é <code>[^]</code>, mas não é suportado em todos os navegadores.</p>",
       example: ["[\\s\\S]", "glib jocks vex dwarves!"],
       token: "[\\s\\S]"
     }, {
       id: "unicodegrapheme",
-      label: "unicode grapheme",
-      desc: "Matches any single unicode grapheme (ie. character).",
-      ext: " This includes line breaks (regardless of the dotall mode) and graphemes encoded as multiple code points.",
+      label: "grafema unicode",
+      desc: "Corresponde a qualquer grafema unicode que seja única (ex. caractere).",
+      ext: " Isso inclui quebras de linha (independentemente do modo dotall) e grafemas codificadas como vários pontos do código.",
       token: "\\X"
     }, {
       id: "word",
-      desc: "Matches any word character (alphanumeric & underscore).",
-      ext: " Only matches low-ascii characters (no accented or non-roman characters). Equivalent to <code>[A-Za-z0-9_]</code>",
+      label: "Palavra",
+      desc: "Corresponde a qualquer caractere de palavra (alfanumérico e sublinhado).",
+      ext: " Corresponde apenas a caracteres low-ascii (caracteres padrões) (não inclui caracteres acentuados ou não romanos). Equivalente a <code>[A-Za-z0-9_]</code>",
       example: ["\\w", "bonjour, mon fr\u00E8re"],
       token: "\\w"
     }, {
       id: "notword",
-      label: "not word",
-      desc: "Matches any character that is not a word character (alphanumeric & underscore).",
-      ext: " Equivalent to <code>[^A-Za-z0-9_]</code>",
+      label: "Não Palavra",
+      desc: "Corresponde a qualquer caractere que não seja um caractere de palavra (alfanumérico e sublinhado).",
+      ext: " Equivalente a <code>[^A-Za-z0-9_]</code>",
       example: ["\\W", "bonjour, mon fr\u00E8re"],
       token: "\\W"
     }, {
       id: "digit",
-      desc: "Matches any digit character (0-9).",
-      ext: " Equivalent to <code>[0-9]</code>.",
+      label: "Dígito",
+      desc: "Corresponde a qualquer caractere de dígito (0-9).",
+      ext: " Equivalente a <code>[0-9]</code>.",
       example: ["\\d", "+1-(444)-555-1234"],
       token: "\\d"
     }, {
       id: "notdigit",
-      label: "not digit",
-      desc: "Matches any character that is not a digit character (0-9).",
-      ext: " Equivalent to <code>[^0-9]</code>.",
+      label: "Não Dígito",
+      desc: "Corresponde a qualquer caractere que não seja um dígito (0-9).",
+      ext: " Equivalente a <code>[^0-9]</code>.",
       example: ["\\D", "+1-(444)-555-1234"],
       token: "\\D"
     }, {
       id: "whitespace",
-      desc: "Matches any whitespace character (spaces, tabs, line breaks).",
+      label: "Espaço em Branco",
+      desc: "Corresponde a qualquer caractere de espaço em branco (espaços, tabulações, quebras de linha).",
       example: ["\\s", "glib jocks vex dwarves!"],
       token: "\\s"
     }, {
       id: "notwhitespace",
-      label: "not whitespace",
-      desc: "Matches any character that is not a whitespace character (spaces, tabs, line breaks).",
+      label: "Não Espaço em Branco",
+      desc: "Corresponde a qualquer caractere que não seja um espaço em branco (espaços, tabulações, quebras de linha).",
       example: ["\\S", "glib jocks vex dwarves!"],
       token: "\\S"
     }, {
       id: "hwhitespace",
-      label: "horizontal whitespace",
-      desc: "Matches any horizontal whitespace character (spaces, tabs).",
+      label: "Espaço em Branco Horizontal",
+      desc: "Corresponde a qualquer caractere de espaço em branco horizontal (espaços, guias).",
       token: "\\h"
     }, {
       id: "nothwhitespace",
-      label: "not horizontal whitespace",
-      desc: "Matches any character that is not a horizontal whitespace character (spaces, tabs).",
+      label: "Espaço em Branco Não Horizontal",
+      desc: "Corresponde a qualquer caractere que não seja um espaço em branco horizontal (espaços, guias).",
       token: "\\H"
     }, {
       id: "vwhitespace",
-      label: "vertical whitespace",
-      desc: "Matches any vertical whitespace character (line breaks).",
+      label: "Espaço em Branco Vertical",
+      desc: "Corresponde a qualquer caractere de espaço em branco vertical (quebras de linha).",
       token: "\\v"
     }, {
       id: "notvwhitespace",
-      label: "not vertical whitespace",
-      desc: "Matches any character that is not a vertical whitespace character (line breaks).",
+      label: "Espaço em Branco Não Vertical",
+      desc: "Corresponde a qualquer caractere que não seja um espaço em branco vertical (quebras de linha).",
       token: "\\V"
     }, {
       id: "linebreak",
-      label: "line break",
-      desc: "Matches any line break character, including the CRLF pair, and CR / LF individually.",
+      label: "Quebra de Linha",
+      desc: "Corresponde a qualquer caractere de quebra de linha, incluindo o par CRLF e CR/LF individualmente.",
       token: "\\R"
     }, {
       id: "notlinebreak",
-      label: "not line break",
-      desc: "Matches any character that is not a line break.",
-      ext: " Similar to dot (<code>.</code>) but is unaffected by the dotall flag (<code>s</code>).",
+      label: "Não Quebra de Linha",
+      desc: "Corresponde a qualquer caractere que não seja uma quebra de linha.",
+      ext: " Igual ao dot(ponto) (<code>.</code>) mas não é afetado pelo sinalizador dotall (<code>s</code>).",
       token: "\\N"
     }, {
       id: "unicodecat",
-      tip: "Matches any character in the '{{getUniCat()}}' unicode category.",
-      label: "unicode category",
-      desc: "Matches a character in the specified unicode category. For example, <code>\\p{Ll}</code> will match any lowercase letter.",
-      ext: "<p>For a list of categories, see the <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE spec</a>.</p>" + "<p>There are multiple syntaxes for this feature:</p><p><code>\\p{L}</code> <code>\\pL</code></p>",
+      tip: "Corresponde a qualquer caractere na categoria '{{getUniCat()}}' unicode.",
+      label: "Categoria Unicode",
+      desc: "Corresponde a um caractere na categoria unicode especificada. Por exemplo, <code>\\p{Ll}</code> irá corresponder a qualquer letra minúscula.",
+      ext: "<p>Para uma lista de categorias, consulte o spec do <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE</a>.</p>" + "<p>Existem várias sintaxes para esse recurso: </p><p><code>\\p{L}</code> <code>\\pL</code></p>",
       token: "\\p{L}"
     }, {
       id: "notunicodecat",
-      tip: "Matches any character that is not in the '{{getUniCat()}}' unicode category.",
-      label: "not unicode category",
-      desc: "Matches any character that is not in the specified unicode category.",
-      ext: "<p>For a list of categories, see the <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE spec</a>.</p>" + "<p>There are multiple syntaxes for this feature:</p><p><code>\\P{L}</code> <code>\\p{^L}</code> <code>\\PL</code></p>",
+      tip: "Corresponde a qualquer caractere que não esteja na categoria '{{getUniCat()}}' unicode.",
+      label: "Categoria Não Unicode",
+      desc: "Corresponde a qualquer caractere que não esteja na categoria unicode especificada.",
+      ext: "<p>Para uma lista de categorias, consulte o spec do <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE</a>.</p>" + "<p>Existem várias sintaxes para esse recurso: </p><p><code>\\P{L}</code> <code>\\p{^L}</code> <code>\\PL</code></p>",
       token: "\\P{L}"
     }, {
       id: "unicodescript",
-      tip: "Matches any character in the '{{value}}' unicode script.",
-      label: "unicode script",
-      desc: "Matches any character in the specified unicode script. For example, <code>\\p{Arabic}</code> will match characters in the Arabic script.",
-      ext: "<p>For a list of scripts, see the <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE spec</a>.</p>",
+      tip: "Corresponde a qualquer caractere no script '{{value}}' unicode.",
+      label: "Script Unicode",
+      desc: "Corresponde a qualquer caractere no script unicode especificado. Por exemplo, <code>\\p{Arabic}</code> irá corresponder a caracteres do script Árabe.",
+      ext: "<p>Para obter uma lista de scripts, consulte o spec do <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE</a>.</p>",
       token: "\\p{Han}"
     }, {
       id: "notunicodescript",
-      tip: "Matches any character that is not in the '{{value}}' unicode script.",
-      label: "not unicode script",
-      desc: "Matches any character that is not in the specified unicode script.",
-      ext: "<p>For a list of scripts, see the <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE spec</a>.</p>" + "<p>There are multiple syntaxes for this feature:</p><p><code>\\P{Han}</code> <code>\\p{^Han}</code>",
+      tip: "Corresponde a qualquer caractere que não esteja no script '{{value}}' unicode.",
+      label: "Script Não Unicode",
+      desc: "Corresponde a qualquer caractere que não esteja no script unicode especificado.",
+      ext: "<p>Para obter uma lista de scripts, consulte o spec do <a href='http://www.pcre.org/original/doc/html/pcrepattern.html'>PCRE</a>.</p>" + "<p>Existem várias sintaxes para esse recurso: </p><p><code>\\P{Han}</code> <code>\\p{^Han}</code>",
       token: "\\P{Han}"
     }]
   }, {
     label: "Anchors",
-    id: "anchors",
-    desc: "Anchors are unique in that they match a position within a string, not a character.",
+    id: "âncoras",
+    desc: "As âncoras são únicas, pois correspondem a uma <b>posição</b> dentro de uma sequência, não a um <b>caractere</b>.",
     kids: [{
       id: "bos",
-      label: "beginning of string",
-      desc: "Matches the beginning of the string.",
-      ext: " Unlike <code>^</code>, this is unaffected by the multiline flag (<code>m</code>). This matches a position, not a character.",
+      label: "Início da String",
+      desc: "Corresponde ao início da string.",
+      ext: " Ao contrário do <code>^</code>, esse não é afetado pelo sinalizador de múltiplas linhas (<code>m</code>). Retorna uma posição e não um caractere.",
       token: "\\A"
     }, {
       id: "eos",
-      label: "end of string",
-      desc: "Matches the end of the string.",
-      ext: " Unlike <code>$</code>, this is unaffected by the multiline flag (<code>m</code>). This matches a position, not a character.",
+      label: "Fim da String",
+      desc: "Corresponde ao final da string.",
+      ext: " Ao contrário do <code>$</code>, esse não é afetado pelo sinalizador de múltiplas linhas (<code>m</code>). Retorna uma posição e não um caractere.",
       token: "\\Z"
     }, {
       id: "abseos",
-      label: "strict end of string",
-      desc: "Matches the end of the string. Unlike <code>$</code> or <code>\\Z</code>, it does not allow for a trailing newline.",
-      ext: " This is unaffected by the multiline flag (<code>m</code>). This matches a position, not a character.",
+      label: "Fim Estrito da String",
+      desc: "Corresponde ao final da string. Ao contrário do <code>$</code> ou <code>\\Z</code>, não permite uma nova linha à direita.",
+      ext: " Isso não é afetado pelo sinalizador de múltiplas linhas (<code>m</code>). Retorna uma posição e não um caractere.",
       token: "\\z"
     }, {
       id: "bof",
-      label: "beginning",
-      desc: "Matches the beginning of the string, or the beginning of a line if the multiline flag (<code>m</code>) is enabled.",
-      ext: " This matches a position, not a character.",
-      example: ["^\\w+", "she sells seashells"],
+      label: "Início",
+      desc: "Corresponde ao início da string ou no início de uma linha se o sinalizador de múltiplas linhas (<code>m</code>) estiver habilitado.",
+      ext: " Retorna uma posição e não um caractere.",
+      example: ["^\\w+", "três tigres tristes"],
       token: "^"
     }, {
       id: "eof",
-      label: "end",
-      desc: "Matches the end of the string, or the end of a line if the multiline flag (<code>m</code>) is enabled.",
-      ext: " This matches a position, not a character.",
-      example: ["\\w+$", "she sells seashells"],
+      label: "Fim",
+      desc: "Corresponde ao final da string ou no final de uma linha se o sinalizador de múltiplas linhas (<code>m</code>) estiver habilitado.",
+      ext: " Retorna uma posição e não um caractere.",
+      example: ["\\w+$", "três tigres tristes"],
       token: "$"
     }, {
       id: "wordboundary",
-      label: "word boundary",
-      desc: "Matches a word boundary position between a word character and non-word character or position (start / end of string).",
-      ext: " See the word character class (<code>\w</code>) for more info.",
-      example: ["s\\b", "she sells seashells"],
+      label: "Limite de Palavras",
+      desc: "Corresponde a uma posição limite entre um caractere de palavra e um caractere que não seja de uma palavra ou uma posição (início / fim da string).",
+      ext: " Consulte o sinalizador (<code>\w</code>) em <b>Classes de caracteres</b> para mais informações.",
+      example: ["s\\b", "três tigres tristes"],
       token: "\\b"
     }, {
       id: "notwordboundary",
-      label: "not word boundary",
-      desc: "Matches any position that is not a word boundary.",
-      ext: " This matches a position, not a character.",
-      example: ["s\\B", "she sells seashells"],
+      label: "Não Limite de Palavras",
+      desc: "Corresponde a qualquer posição que não seja um limite de palavra.",
+      ext: " Retorna uma posição e não um caractere.",
+      example: ["s\\B", "três tigres tristes"],
       token: "\\B"
     }, {
       id: "prevmatchend",
-      label: "previous match end",
-      desc: "Matches the end position of the previous match.",
-      ext: " This matches a position, not a character.",
+      label: "Fim da Correspondência Anterior",
+      desc: "Pega à posição final da correspondência anterior.",
+      ext: " Retorna uma posição e não um caractere.",
       token: "\\G"
     }]
   }, {
-    label: "Escaped characters",
+    label: "Caracteres escapados",
     id: "escchars",
-    desc: "Escape sequences can be used to insert reserved, special, and unicode characters. All escaped characters begin with the <code>\\</code> character.",
+    desc: "Sequências de escape podem ser usadas para inserir caracteres reservados, especiais e unicode. Todos os caracteres de escape começam com a <code>\\</code>.",
     kids: [{
       id: "reservedchar",
-      label: "reserved characters",
-      desc: "The following character have special meaning, and should be preceded by a <code>\\</code> (backslash) to represent a literal character:" + "<p><code>{{getEscChars()}}</code></p>" + "<p>Within a character set, only <code>\\</code>, <code>-</code>, and <code>]</code> need to be escaped.</p>",
+      label: "Caracteres Reservados",
+      desc: "O caractere a seguir tem um significado especial e deve ser precedido por uma <code>\\</code> (barra invertida) para representação literal:" + "<p><code>{{getEscChars()}}</code></p>" + "<p>Dentro de um conjunto de caracteres, apenas a <code>\\</code>, <code>-</code>, e <code>]</code> precisam ser escapados.</p>",
       example: ["\\+", "1 + 1 = 2"],
       token: "\\+",
       show: true
     }, {
       id: "escoctal",
-      label: "octal escape",
-      desc: "Octal escaped character in the form <code>\\000</code>.",
-      ext: " Value must be less than 255 (<code>\\377</code>).",
+      label: "Escapada Octal",
+      desc: "Caractere de escapada octal se dá na forma <code>\\000</code>.",
+      ext: " O valor deve ser menor que 255 (<code>\\377</code>).",
       // PCRE profile adds to ext.
-      example: ["\\251", "RegExr is \u00A92014"],
+      example: ["\\251", "RegEx é \u00A92014"],
       token: "\\000"
     }, {
       id: "eschexadecimal",
-      label: "hexadecimal escape",
-      desc: "Hexadecimal escaped character in the form <code>\\xFF</code>.",
-      example: ["\\xA9", "RegExr is \u00A92014"],
+      label: "Escapada Hexadecimal",
+      desc: "Caractere de escapada hexadecimal se dá na forma <code>\\xFF</code>.",
+      example: ["\\xA9", "RegEx é \u00A92014"],
       token: "\\xFF"
     }, {
       id: "escunicodeu",
-      label: "unicode escape",
-      desc: "Unicode escaped character in the form <code>\\uFFFF</code>",
-      example: ["\\u00A9", "RegExr is \u00A92014"],
+      label: "Escapada Unicode",
+      desc: "Caractere de escapada unicode se dá na forma <code>\\uFFFF</code>",
+      example: ["\\u00A9", "RegEx é \u00A92014"],
       token: "\\uFFFF"
     }, {
       id: "escunicodeub",
-      label: "extended unicode escape",
-      desc: "Unicode escaped character in the form <code>\\u{FFFF}</code>.",
-      ext: " Supports a full range of unicode point escapes with any number of hex digits. <p>Requires the unicode flag (<code>u</code>).</p>",
+      label: "Escapada Unicode Extendida",
+      desc: "Caractere de escapada unicode extendida se dá na forma <code>\\u{FFFF}</code>.",
+      ext: " Suporta uma gama completa de escapes de ponto unicode com qualquer número de dígitos hexadecimais. <p>Requer o sinalizador unicode (<code>u</code>).</p>",
       token: "\\u{FFFF}"
     }, {
       id: "escunicodexb",
-      label: "unicode escape",
-      desc: "Unicode escaped character in the form <code>\\x{FF}</code>.",
+      label: "Escapada Unicode",
+      desc: "Caractere de escapada unicode se dá na forma <code>\\x{FF}</code>.",
       token: "\\x{FF}"
     }, {
       id: "esccontrolchar",
-      label: "control character escape",
-      desc: "Escaped control character in the form <code>\\cZ</code>.",
-      ext: " This can range from <code>\\cA</code> (SOH, char code 1) to <code>\\cZ</code> (SUB, char code 26). <h1>Example:</h1><code>\\cI</code> matches TAB (char code 9).",
+      label: "Escapada Controle De Caracteres",
+      desc: "Escapada controle de caracteres se dá na forma <code>\\cZ</code>.",
+      ext: " Isso pode variar de <code>\\cA</code> (SOH, código do caractere 1) até <code>\\cZ</code> (SUB, código do caractere 26). <h1>Exemplo: </h1><code>\\cI</code> corresponde a TAB (código do caractere 9).",
       token: "\\cI"
     }, {
       id: "escsequence",
-      label: "escape sequence",
-      tip: "Matches the literal string '{{value}}'.",
-      desc: "All characters between the <code>\\Q</code> and the <code>\\E</code> are interpreted as a literal string. If <code>\\E</code> is omitted, it continues to the end of the expression.",
-      ext: " For example, the expression <code>/\\Q(?.)\\E/</code> will match the string <code>(?.)</code>.",
+      label: "Sequência de Escapada",
+      tip: "Corresponde à string literal '{{value}}'.",
+      desc: "Todos os caracteres entre <code>\\Q</code> e <code>\\E</code> são interpretados como uma string literal. Se o <code>\\E</code> for omitido então continua até o final da expressão.",
+      ext: " Por exemplo, a expressão <code>/\\Q(?.)\\E/</code> vai encontrar a string <code>(?.)</code>.",
       token: "\\Q...\\E"
     }]
   }, {
-    label: "Groups & References",
+    label: "Grupos e Referências",
     id: "groups",
-    desc: "Groups allow you to combine a sequence of tokens to operate on them together. Capture groups can be referenced by a backreference and accessed separately in the results.",
+    desc: "Os grupos permitem combinar uma sequência de tokens para operá-los juntos. Os grupos de captura podem ser referenciados por uma referência anterior e acessados separadamente nos resultados.",
     kids: [{
       id: "group",
-      label: "capturing group",
-      desc: "Groups multiple tokens together and creates a capture group for extracting a substring or using a backreference.",
+      label: "grupo de captura",
+      desc: "Agrupa vários tokens e cria um grupo de captura para extrair uma substring ou usar uma referência anterior.",
       example: ["(ha)+", "hahaha haa hah!"],
       token: "(ABC)"
     }, {
       id: "namedgroup",
-      label: "named capturing group",
-      tip: "Creates a capturing group named '{{name}}'.",
-      desc: "Creates a capturing group that can be referenced via the specified name.",
-      ext: "<p>There are multiple syntaxes for this feature:</p><p><code>(?'name'ABC)</code> <code>(?P&lt;name>ABC)</code> <code>(?&lt;name>ABC)</code></p>",
-      token: "(?<name>ABC)"
+      label: "grupo de captura nomeado",
+      tip: "Cria um grupo de captura chamado '{{name}}'.",
+      desc: "Cria um grupo de captura que pode ser referenciado pelo nome especificado.",
+      ext: "<p>Existem várias sintaxes para esse recurso: </p><p><code>(?'nome'ABC)</code> <code>(?P&lt;nome>ABC)</code> <code>(?&lt;nome>ABC)</code></p>",
+      token: "(?<nome>ABC)"
     }, {
       id: "namedref",
-      label: "named reference",
-      tip: "Matches the results of the capture group named '{{group.name}}'.",
-      desc: "Matches the results of a named capture group.",
-      ext: "<p>There are multiple syntaxes for this feature:</p><p><code>\\k'name'</code> <code>\\k&lt;name></code> <code>\\k{name}</code> <code>\\g{name}</code> <code>(?P=name)</code></p>",
-      token: "\\k'name'"
+      label: "referência nomeada",
+      tip: "Corresponde aos resultados do grupo de captura chamado '{{group.name}}'.",
+      desc: "Corresponde aos resultados de um grupo de captura nomeado.",
+      ext: "<p>Existem várias sintaxes para esse recurso: </p><p><code>\\k'nome'</code> <code>\\k&lt;nome></code> <code>\\k{nome}</code> <code>\\g{nome}</code> <code>(?P=nome)</code></p>",
+      token: "\\k'nome'"
     }, {
       id: "numref",
-      label: "numeric reference",
-      tip: "Matches the results of capture group #{{group.num}}.",
-      desc: "Matches the results of a capture group. For example <code>\\1</code> matches the results of the first capture group & <code>\\3</code> matches the third.",
+      label: "referência numérica",
+      tip: "Corresponde aos resultados do grupo de captura #{{group.num}}.",
+      desc: "Corresponde aos resultados de um grupo de captura. Por exemplo, <code>\\1</code> corresponde aos resultados do primeiro grupo de captura e <code>\\3</code> coincide com o terceiro.",
       // PCRE adds relative and alternate syntaxes in ext
-      example: ["(\\w)a\\1", "hah dad bad dab gag gab"],
+      example: ["(\\w)a\\1", "hah vai cai pai uai"],
       token: "\\1"
     }, {
       id: "branchreset",
-      label: "branch reset group",
-      desc: "Define alternative groups that share the same group numbers.",
-      ext: "<p>For example, in <code>(?|(a)|(b))</code> both groups (a and b) would be counted as group #1.",
+      label: "grupo de redefinição de ramificação",
+      desc: "Defina grupos alternativos que compartilhem os mesmos números de grupo.",
+      ext: "<p>Por exemplo, na expressão <code>(?|(a)|(b))</code> os dois grupos (a e b) seriam referenciados como grupo #1.",
       token: "(?|(a)|(b))"
     }, {
       id: "noncapgroup",
-      label: "non-capturing group",
-      desc: "Groups multiple tokens together without creating a capture group.",
+      label: "grupo não capturável",
+      desc: "Agrupa vários tokens juntos sem criar um grupo de captura.",
       example: ["(?:ha)+", "hahaha haa hah!"],
       token: "(?:ABC)"
     }, {
       id: "atomic",
-      label: "atomic group",
-      desc: "Non-capturing group that discards backtracking positions once matched.",
-      ext: "<p>For example, <code>/(?>ab|a)b/</code> will match <code>abb</code> but not <code>ab</code> because once the <code>ab</code> option has matched, the atomic group prevents backtracking to retry with the <code>a</code> option.</p>",
+      label: "grupo atômico",
+      desc: "Grupo não capturável que descarta as posições de retorno uma vez que for correspondido.",
+      ext: "<p>Por exemplo, <code>/(?>ab|a)b/</code> irá encontrar <code>abb</code> mas não <code>ab</code> porque uma vez que a opção <code>ab</code> for correspondida, o grupo atômico impede que o backtracking (retroceder para pesquisar) tente novamente com a opção <code>a</code>.</p>",
       token: "(?>ABC)"
     }, {
       id: "define",
-      desc: "Used to define named groups for use as subroutines without including them in the match.",
-      ext: "<p>For example, <code>/A(?(DEFINE)(?'foo'Z))B\\g'foo'/</code> will match <code>ABZ</code>, because the define group is ignored in the match except to define the <code>foo</code> subroutine that is referenced later with <code>\\g'foo'</code>.</p>",
+      desc: "Usado para definir grupos nomeados para uso como sub-rotinas sem incluí-los na correspondência.",
+      ext: "<p>Por exemplo, <code>/A(?(DEFINE)(?'foo'Z))B\\g'foo'/</code> corresponderá a <code>ABZ</code>, porque o grupo <b>DEFINE</b> é ignorado na correspondência, exceto para definir a sub-rotina <code>foo</code> referenciada posteriormente com <code>\\g'foo'</code>.</p>",
       token: "(?(DEFINE)(?'foo'ABC))"
     }, {
       id: "numsubroutine",
-      label: "numeric subroutine",
-      tip: "Matches the expression in capture group #{{group.num}}.",
-      desc: "Matches the expression in a capture group. Compare this to a reference, that matches the result." + " For example <code>/(a|b)\\g'1'/</code> can match <code>ab</code>, because the expression <code>a|b</code> is evaluated again.",
-      ext: "<p>There are multiple syntaxes for this feature: <code>\\g&lt;1></code> <code>\\g'1'</code> <code>(?1)</code>.</p>" + "<p>Relative values preceded by <code>+</code> or <code>-</code> are also supported. For example <code>\\g<-1></code> would match the group preceding the reference.</p>",
+      label: "sub-rotina numérica",
+      tip: "Corresponde à expressão no grupo de captura #{{group.num}}.",
+      desc: "Corresponde à expressão em um grupo de captura. Compare isso com uma referência que corresponda ao resultado." + " Por exemplo <code>/(a|b)\\g'1'/</code> pode encontrar <code>ab</code>, porque a expressão <code>a|b</code> é avaliado novamente.",
+      ext: "<p>Existem várias sintaxes para esse recurso: <code>\\g&lt;1></code> <code>\\g'1'</code> <code>(?1)</code>.</p>" + "<p>Valores relativos precedidos por <code>+</code> ou <code>-</code> também são suportados. Por exemplo <code>\\g<-1></code> corresponderia ao grupo anterior à referência.</p>",
       token: "\\g'1'"
     }, {
       id: "namedsubroutine",
-      label: "named subroutine",
-      tip: "Matches the expression in the capture group named '{{group.name}}'.",
-      desc: "Matches the expression in a capture group. Compare this to a reference, that matches the result.",
-      ext: "<p>There are multiple syntaxes for this feature: <code>\\g&lt;name></code> <code>\\g'name'</code> <code>(?&name)</code> <code>(?P>name)</code>.</p>",
-      token: "\\g'name'"
+      label: "sub-rotina nomeada",
+      tip: "Corresponde à expressão no grupo de captura chamado '{{group.name}}'.",
+      desc: "Corresponde à expressão em um grupo de captura. Compare isso com uma referência que corresponda ao resultado.",
+      ext: "<p>Existem várias sintaxes para esse recurso: <code>\\g&lt;nome></code> <code>\\g'nome'</code> <code>(?&nome)</code> <code>(?P>nome)</code>.</p>",
+      token: "\\g'nome'"
     }]
   }, {
-    label: "Lookaround",
+    label: "Lookaround (Olhar em volta)",
     id: "lookaround",
-    desc: "Lookaround lets you match a group before (lookbehind) or after (lookahead) your main pattern without including it in the result." + "<p>Negative lookarounds specify a group that can NOT match before or after the pattern.</p>",
+    desc: "Lookaround permite encontrar um grupo antes (lookbehind) ou depois (lookahead) do seu padrão principal sem incluí-lo no resultado." + "<p>Lookarounds negativo especifica um grupo que NÃO pode ser encontrado antes ou depois do padrão.</p>",
     kids: [{
       id: "poslookahead",
-      label: "positive lookahead",
-      desc: "Matches a group after the main expression without including it in the result.",
+      label: "Lookahead positivo",
+      desc: "Corresponde a um grupo após a expressão principal sem incluí-lo no resultado.",
       example: ["\\d(?=px)", "1pt 2px 3em 4px"],
       token: "(?=ABC)"
     }, {
       id: "neglookahead",
-      label: "negative lookahead",
-      desc: "Specifies a group that can not match after the main expression (if it matches, the result is discarded).",
+      label: "Lookahead negativo",
+      desc: "Especifica um grupo que não pode corresponder após a expressão principal (se corresponder, o resultado será descartado).",
       example: ["\\d(?!px)", "1pt 2px 3em 4px"],
       token: "(?!ABC)"
     }, {
       id: "poslookbehind",
-      label: "positive lookbehind",
-      desc: "Matches a group before the main expression without including it in the result.",
+      label: "Lookbehind positivo",
+      desc: "Corresponde a um grupo antes da expressão principal sem incluí-lo no resultado.",
       token: "(?<=ABC)"
     }, {
       id: "neglookbehind",
-      label: "negative lookbehind",
-      desc: "Specifies a group that can not match before the main expression (if it matches, the result is discarded).",
+      label: "Lookbehind negativo",
+      desc: "Especifica um grupo que não pode ser correspondido antes da expressão principal (se corresponder, o resultado será descartado).",
       token: "(?<!ABC)"
     }, {
       id: "keepout",
-      label: "keep out",
-      desc: "Keep text matched so far out of the returned match, essentially discarding the match up to this point.",
-      ext: "For example <code>/o\\Kbar/</code> will match <code>bar</code> within the string <code>foobar</code>",
+      label: "keep out (manter fora)",
+      desc: "Mantenha o texto encontrado até o momento fora da correspondência retornada, essencialmente descartando a correspondência até este ponto.",
+      ext: "Por exemplo, <code>/o\\Kbar/</code> encontrará <code>bar</code> dentro da string <code>foobar</code>",
       token: "\\K"
     }]
   }, {
-    label: "Quantifiers & Alternation",
+    label: "Quantificadores e Alternação",
     id: "quants",
-    desc: "Quantifiers indicate that the preceding token must be matched a certain number of times. By default, quantifiers are greedy, and will match as many characters as possible." + "<hr/>Alternation acts like a boolean OR, matching one sequence or another.",
+    desc: "Os quantificadores indicam que o token anterior deve corresponder um certo número de vezes. Por padrão, os quantificadores são gananciosos e corresponderão ao maior número de caracteres possível." + "<hr/>A alternância atua como um OR booleano, correspondendo a uma sequência ou outra.",
     kids: [{
       id: "plus",
-      desc: "Matches 1 or more of the preceding token.",
-      example: ["b\\w+", "b be bee beer beers"],
+      desc: "Corresponde a 1 ou mais do token anterior.",
+      example: ["b\\w+", "b be bel bele beleza"],
       token: "+"
     }, {
       id: "star",
-      desc: "Matches 0 or more of the preceding token.",
-      example: ["b\\w*", "b be bee beer beers"],
+      desc: "Corresponde a 0 ou mais do token anterior.",
+      example: ["b\\w*", "b be bel bele beleza"],
       token: "*"
     }, {
       id: "quant",
-      label: "quantifier",
-      tip: "Match {{getQuant()}} of the preceding token.",
-      desc: "Matches the specified quantity of the previous token. " + "<code>{1,3}</code> will match 1 to 3. " + "<code>{3}</code> will match exactly 3. " + "<code>{3,}</code> will match 3 or more. ",
-      example: ["b\\w{2,3}", "b be bee beer beers"],
+      label: "quantificador",
+      tip: "Encontra {{getQuant()}} ocorrências do token precedente.",
+      desc: "Corresponde à quantidade especificada do token anterior. " + "<code>{1,3}</code> corresponderá a 1 até 3. " + "<code>{3}</code> corresponderá exatamente a 3. " + "<code>{3,}</code> irá corresponder a 3 ou mais. ",
+      example: ["b\\w{2,3}", "b be bel bele beleza"],
       token: "{1,3}"
     }, {
       id: "opt",
-      label: "optional",
-      desc: "Matches 0 or 1 of the preceding token, effectively making it optional.",
-      example: ["colou?r", "color colour"],
+      label: "opcional",
+      desc: "Corresponde a 0 ou 1 do token anterior, tornando-o opcional.",
+      example: ["fac?to", "fato facto"],
       token: "?"
     }, {
       id: "lazy",
-      tip: "Makes the preceding quantifier {{getLazy()}}, causing it to match as {{getLazyFew()}} characters as possible.",
-      desc: "Makes the preceding quantifier lazy, causing it to match as few characters as possible.",
-      ext: " By default, quantifiers are greedy, and will match as many characters as possible.",
-      example: ["b\\w+?", "b be bee beer beers"],
+      tip: "Torna o quantificador anterior {{getLazy()}}, fazendo com que ele corresponda ao {{getLazyFew()}} de caracteres possível.",
+      desc: "Torna o quantificador anterior <b>preguiçoso</b>, fazendo com que ele corresponda ao mínimo de caracteres possível.",
+      ext: " Por padrão, os quantificadores são gananciosos e corresponderão ao máximo de caracteres possível.",
+      example: ["b\\w+?", "b be bel bele beleza"],
       token: "?"
     }, {
       id: "possessive",
-      desc: "Makes the preceding quantifier possessive. It will match as many characters as possible, and will not release them to match subsequent tokens.",
-      ext: "<p>For example <code>/.*a/</code> would match <code>aaa</code>, but <code>/.*+a/</code> would not, because the repeating dot would match and not release the last character to match <code>a</code>.</p>",
+      desc: "Torna possessivo o quantificador anterior. Ele corresponderá ao maior número possível de caracteres e não os liberará para corresponder aos tokens subsequentes.",
+      ext: "<p>Por exemplo, <code>/.*a/</code> encontraria <code>aaa</code>, mas <code>/.*+a/</code> não, porque o ponto de repetição corresponderia e não liberaria o último caractere <code>a</code>.</p>",
       token: "+"
     }, {
       id: "alt",
-      label: "alternation",
-      desc: "Acts like a boolean OR. Matches the expression before or after the <code>|</code>.",
-      ext: "<p>It can operate within a group, or on a whole expression. The patterns will be tested in order.</p>",
+      label: "alternação",
+      desc: "Atua como um OU booleano. Corresponde à expressão antes ou depois do <code>|</code>.",
+      ext: "<p>Pode operar dentro de um grupo ou em uma expressão inteira. Os padrões serão testados em ordem.</p>",
       example: ["b(a|e|i)d", "bad bud bod bed bid"],
       token: "|"
     }]
   }, {
-    label: "Special",
+    label: "Especial",
     id: "other",
-    desc: "Tokens that don't quite fit anywhere else.",
+    desc: "Tokens que não se encaixam em nenhum outro lugar.",
     kids: [{
       id: "comment",
-      desc: "Allows you to insert a comment into your expression that is ignored when finding a match.",
+      desc: "Permite inserir um comentário em sua expressão que é ignorado ao encontrar uma correspondência.",
       token: "(?#foo)"
     }, {
       id: "conditional",
-      desc: "Conditionally matches one of two options based on whether a lookaround is matched.",
-      ext: "<p>For example, <code>/(?(?=a)ab|..)/</code> will match <code>ab</code> and <code>zx</code> but not <code>ax</code>, because if the first character matches the condition <code>a</code> then it evaluates the pattern <code>ab</code>.</p>" + "<p>Any lookaround can be used as the condition. A lookahead will start the subsequent match at the start of the condition, a lookbehind will start it after.</p>",
+      desc: "Corresponde condicionalmente a uma das duas opções, com base no fato de uma pesquisa ser correspondida.",
+      ext: "<p>Por exemplo, <code>/(?(?=a)ab|..)/</code> encontrará <code>ab</code> e <code>zx</code> mas não corresponderá <code>ax</code>, porque se o primeiro caractere corresponde à condição <code>a</code>, ele avalia o padrão <code>ab</code>.</p>" + "<p>Qualquer lookaround pode ser usado como condicional. Um lookahead iniciará a correspondência subsequente no início da condição, um lookbehind a iniciará depois.</p>",
       token: "(?(?=A)B|C)"
     }, {
       id: "conditionalgroup",
-      label: "group conditional",
-      desc: "Conditionally matches one of two options based on whether group '{{name}}' matched.",
-      ext: "<p>For example, <code>/(z)?(?(1)a|b)/</code> will match <code>za</code> because the first capture group matches <code>z</code> successfully, which causes the conditional to match the first option <code>a</code>.</p>" + "<p>The same pattern will also match <code>b</code> on its own, because group 1 doesn't match, so it instead tries to match the second option <code>b</code>.</p>" + "<p>You can reference a group by name, number, or relative position (ex. <code>-1</code>).</p>",
+      label: "grupo condicional",
+      desc: "Corresponde condicionalmente a uma das duas opções com base em um grupo '{{name}}' ser encontrado.",
+      ext: "<p>Por exemplo, <code>/(z)?(?(1)a|b)/</code> encontrará <code>za</code> porque o primeiro grupo de captura corresponderá a <code>z</code>, o que faz com que o condicional corresponda à primeira opção <code>a</code>.</p>" + "<p>O mesmo padrão também corresponderá a <code>b</code> por conta própria, porque o grupo 1 não corresponde, então ele tentará encontrar a segunda opção <code>b</code>.</p>" + "<p>Você pode fazer referência a um grupo por nome, número ou posição relativa (ex. <code>-1</code>).</p>",
       token: "(?(1)B|C)"
     }, {
       id: "recursion",
-      desc: "Attempts to match the full expression again at the current position.",
-      ext: "<p>For example, <code>/a(?R)?b/</code> will match any number of <code>a</code> followed by the same number of <code>z</code>: the full text of <code>az</code> or <code>aaaazzzz</code>, but not <code>azzz</code>.</p>" + "<p>There are multiple syntaxes for this feature:</p><p><code>(?R)</code> <code>(?0)</code> <code>\\g<0></code> <code>\\g'0'</code></p>",
+      desc: "Tenta encontrar novamente a expressão completa usando a posição atual.",
+      ext: "<p>Por exemplo, <code>/a(?R)?b/</code> corresponderá a qualquer número de <code>a</code> seguido pelo mesmo número de <code>z</code>: o texto completo de <code>az</code> ou <code>aaaazzzz</code>, mas não <code>azzz</code>.</p>" + "<p>Existem várias sintaxes para esse recurso: </p><p><code>(?R)</code> <code>(?0)</code> <code>\\g<0></code> <code>\\g'0'</code></p>",
       token: "(?R)"
     }, {
       id: "mode",
-      label: "mode modifier",
+      label: "modificador de modo",
       tip: "{{~getDesc()}}{{~getModes()}}",
-      desc: "Enables or disables modes for the remainder of the expression.",
-      ext: "Matching modes generally map to expression flags. For example <code>(?i)</code> would enable case insensitivity for the remainder of the expression." + "<p>Multiple modifiers can be specified, and any modifiers that follow <code>-</code> are disabled. For example <code>(?im-s)</code> would enable case insensitivity &amp; multiline modes, and disable dotall.</p>" + "<p>Supported modifiers are: <code>i</code> - case insensitive, <code>s</code> - dotall, <code>m</code> - multiline, <code>x</code> - free spacing, <code>J</code> - allow duplicate names, <code>U</code> - ungreedy.</p>",
+      desc: "Ativa ou desativa os modos para o restante da expressão.",
+      ext: "Os modos de correspondência geralmente mapeiam sinalizadores de expressão. Por exemplo, <code>(?i)</code> permitiria a distinção entre maiúsculas e minúsculas para o restante da expressão." + "<p>Vários modificadores podem ser especificados e quaisquer modificadores depois do <code>-</code> são desbilitados. Por exemplo, <code>(?im-s)</code> ativaria a distinção entre maiúsculas e minúsculas e os modos multilinhas e desativaria o dotall.</p>" + "<p>Modificadores suportados são: <code>i</code> - não faz distinção entre maiúsculas e minúsculas, <code>s</code> - dotall, <code>m</code> - modo multilinhas, <code>x</code> - espaçamento livre, <code>J</code> - permite nomes duplicados, <code>U</code> - não ganancioso.</p>",
       token: "(?i)"
     }]
   }, {
-    label: "Substitution",
-    desc: "These tokens are used in a substitution string to insert different parts of the match.",
+    label: "Substituição",
+    desc: "Esses tokens são usados em uma sequência de substituição para inserir diferentes partes na correspondência.",
     target: "subst",
     id: "subst",
     kids: [{
       id: "subst_$&match",
-      label: "match",
-      desc: "Inserts the matched text.",
+      label: "correspondência",
+      desc: "Insere o texto correspondente.",
       token: "$&"
     }, {
       id: "subst_0match",
-      label: "match",
-      desc: "Inserts the matched text.",
-      ext: "<p>There are multiple syntaxes for this feature:</p><p><code>$0</code> <code>\\0</code> <code>\\{0}</code></p>",
+      label: "correspondência",
+      desc: "Insere o texto correspondente.",
+      ext: "<p>Existem várias sintaxes para esse recurso: </p><p><code>$0</code> <code>\\0</code> <code>\\{0}</code></p>",
       token: "$0"
     }, {
       id: "subst_group",
-      label: "capture group",
-      tip: "Inserts the results of capture group #{{group.num}}.",
-      desc: "Inserts the results of the specified capture group. For example, <code>$3</code> would insert the third capture group.",
+      label: "grupo de captura",
+      tip: "Insere os resultados do grupo de captura #{{group.num}}.",
+      desc: "Insere os resultados do grupo de captura especificado. Por exemplo, <code>$3</code> iria inserir o terceiro grupo de captura.",
       // NOTE: javascript profile overrides this:
-      ext: "<p>There are multiple syntaxes for this feature:</p><p><code>$1</code> <code>\\1</code> <code>\\{1}</code></p>",
+      ext: "<p>Existem várias sintaxes para esse recurso: </p><p><code>$1</code> <code>\\1</code> <code>\\{1}</code></p>",
       token: "$1"
     }, {
       id: "subst_$before",
-      label: "before match",
-      desc: "Inserts the portion of the source string that precedes the match.",
+      label: "antes da correspondência",
+      desc: "Insere a parte da string de origem que precede a correspondência.",
       token: "$`"
     }, {
       id: "subst_$after",
-      label: "after match",
-      desc: "Inserts the portion of the source string that follows the match.",
+      label: "depois da correspondência",
+      desc: "Insere a parte da string de origem que sucede a correspondência.",
       token: "$'"
     }, {
       id: "subst_$esc",
-      label: "escaped $",
-      desc: "Inserts a dollar sign character ($).",
+      label: "$ escapado",
+      desc: "Insere um cifrão ($).",
       token: "$$"
     }, {
       id: "subst_esc",
-      label: "escaped characters",
+      label: "caracteres escapados",
       token: "\\n",
-      desc: "For convenience, these escaped characters are supported in the Replace string in RegExr: <code>\\n</code>, <code>\\r</code>, <code>\\t</code>, <code>\\\\</code>, and unicode escapes <code>\\uFFFF</code>. This may vary in your deploy environment."
+      desc: "Por conveniência, esses caracteres de escape são suportados na aba <b>Substituir</b> do editor: <code>\\n</code>, <code>\\r</code>, <code>\\t</code>, <code>\\\\</code>, e os escapes unicode <code>\\uFFFF</code>. Isso pode variar dependendo do ambiente de implementação."
     }]
   }, {
     id: "flags",
-    label: "Flags",
-    tooltip: "Expression flags change how the expression is interpreted. Click to edit.",
-    desc: "Expression flags change how the expression is interpreted. Flags follow the closing forward slash of the expression (ex. <code>/.+/igm</code> ).",
+    label: "Sinalizadores",
+    tooltip: "Os sinalizadores alteram como a expressão é interpretada. Clique para editar.",
+    desc: "Os sinalizadores alteram como a expressão é interpretada. Os sinalizadores são inseridos após a barra de fechamento da expressão (ex. <code>/.+/igm</code> ).",
     target: "flags",
     kids: [{
       id: "caseinsensitive",
-      label: "ignore case",
-      desc: "Makes the whole expression case-insensitive.",
-      ext: " For example, <code>/aBc/i</code> would match <code>AbC</code>.",
+      label: "ignorar capitalização",
+      desc: "Torna toda a expressão sem distinção entre maiúsculas e minúsculas.",
+      ext: " Por exemplo, <code>/aBc/i</code> encontraria <code>AbC</code>.",
       token: "i"
     }, {
       id: "global",
-      label: "global search",
-      tip: "Retain the index of the last match, allowing iterative searches.",
-      desc: "Retain the index of the last match, allowing subsequent searches to start from the end of the previous match." + "<p>Without the global flag, subsequent searches will return the same match.</p><hr/>" + "RegExr only searches for a single match when the global flag is disabled to avoid infinite match errors.",
+      label: "pesquisa global",
+      tip: "Armazena o índice da última correspondência, permitindo pesquisas iterativas.",
+      desc: "Armazena o índice da última correspondência, permitindo que pesquisas subsequentes iniciem no final da correspondência anterior." + "<p>Sem a sinalizador global, as pesquisas subsequentes retornariam a mesma correspondência.</p><hr/>" + "O editor de RegEx procura uma única correspondência quando o sinalizador global está desabilitado para evitar erros de correspondências infinitas.",
       token: "g"
     }, {
       id: "multiline",
-      tip: "Beginning/end anchors (<b>^</b>/<b>$</b>) will match the start/end of a line.",
-      desc: "When the multiline flag is enabled, beginning and end anchors (<code>^</code> and <code>$</code>) will match the start and end of a line, instead of the start and end of the whole string." + "<p>Note that patterns such as <code>/^[\\s\\S]+$/m</code> may return matches that span multiple lines because the anchors will match the start/end of <b>any</b> line.</p>",
+      tip: "Âncoras de Início/Fim (<b>^</b>/<b>$</b>) encontrará o início/fim de uma linha.",
+      desc: "Quando o sinalizador de múltiplas linhas está ativado, âncoras de início (<code>^</code>) e fim (<code>$</code>) corresponderão ao começo e o fim da linha, em vez do início e do fim de uma string." + "<p>Observe que padrões como <code>/^[\\s\\S]+$/m</code> pode retornar correspondências que abrangem várias linhas porque as âncoras corresponderão ao início/fim de <b>qualquer</b> linha.</p>",
       token: "m"
     }, {
       id: "unicode",
-      tip: "Enables <code>\\x{FFFFF}</code> unicode escapes.",
-      desc: "When the unicode flag is enabled, you can use extended unicode escapes in the form <code>\\x{FFFFF}</code>." + "<p>It also makes other escapes stricter, causing unrecognized escapes (ex. <code>\\j</code>) to throw an error.</p>",
+      tip: "Habilita o escape <code>\\x{FFFFF}</code> unicode.",
+      desc: "Quando o sinalizador unicode está ativado, você pode usar escapes unicode estendidos na forma de <code>\\x{FFFFF}</code>." + "<p>Também torna outros escapes mais estritos, por exemplo: (ex. <code>\\j</code>) geraria um erro.</p>",
       token: "u"
     }, {
       id: "sticky",
-      desc: "The expression will only match from its lastIndex position and ignores the global (<code>g</code>) flag if set.",
-      ext: " Because each search in RegExr is discrete, this flag has no further impact on the displayed results.",
+      desc: "A expressão corresponderá apenas a partir da posição lastIndex e ignorará o sinalizador global (<code>g</code>) se estiver definido.",
+      ext: " Como cada pesquisa no editor de RegEx é discreta, esse sinalizador não impacta os resultados exibidos.",
       token: "y"
     }, {
       id: "dotall",
-      desc: "Dot (<code>.</code>) will match any character, including newline.",
+      desc: "Ponto (<code>.</code>) corresponderá a qualquer caractere, incluindo nova linha.",
       token: "s"
     }, {
       id: "extended",
-      desc: "Literal whitespace characters are ignored, except in character sets.",
+      desc: "Caracteres de espaço em branco literais são ignorados, exceto nos conjuntos de caracteres.",
       token: "x"
     }, {
       id: "ungreedy",
-      tip: "Makes quantifiers ungreedy (lazy) by default.",
-      desc: "Makes quantifiers ungreedy (lazy) by default. Quantifiers followed by <code>?</code> will become greedy.",
+      tip: "Torna os quantificadores <b>não gananciosos (preguiçosos)</b> por padrão.",
+      desc: "Torna os quantificadores <b>não gananciosos (preguiçosos)</b> por padrão. Quantificadores seguidos por <code>?</code> se tornarão ganancioso.",
       token: "U"
     }]
   }]; // content that isn't included in the Reference menu item:
@@ -23525,51 +23529,53 @@ var regexr = (function () {
   o.misc = {
     kids: [{
       id: "ignorews",
-      label: "ignored whitespace",
-      tip: "Whitespace character ignored due to the e<b>x</b>tended flag or mode."
+      label: "espaço em branco ignorado",
+      tip: "Caractere de espaço em branco ignorado devido ao sinalizador estendido(<b>x</b>) ou o modo."
     }, {
       id: "extnumref",
       // alternative syntaxes.
       proxy: "numref"
     }, {
       id: "char",
-      label: "character",
-      tip: "Matches a {{getChar()}} character (char code {{code}}). {{getInsensitive()}}"
+      label: "caractere",
+      tip: "Corresponde ao caractere {{getChar()}} (código do caractere {{code}}). {{getInsensitive()}}"
     }, {
       id: "escchar",
-      label: "escaped character",
-      tip: "Matches a {{getChar()}} character (char code {{code}})."
+      label: "caractere escapado",
+      tip: "Corresponde ao caractere {{getChar()}} (código do caractere {{code}})."
     }, {
       id: "open",
-      tip: "Indicates the start of a regular expression."
+      label: "Abertura",
+      tip: "Indica o início de uma expressão regular."
     }, {
       id: "close",
-      tip: "Indicates the end of a regular expression and the start of expression flags."
+      label: "Fechamento",
+      tip: "Indica o final de uma expressão regular e o início dos sinalizadores de expressão."
     }, {
       id: "condition",
-      tip: "The lookaround to match in resolving the enclosing conditional statement. See 'conditional' in the Reference for info."
+      tip: "A solução a ser encontrada na resolução da instrução condicional anexa. Veja 'condicional' na Referência para mais informações."
     }, {
       id: "conditionalelse",
-      label: "conditional else",
-      tip: "Delimits the 'else' portion of the conditional."
+      label: "condicional else",
+      tip: "Delimita a parte 'else' do condicional."
     }, {
       id: "ERROR",
-      tip: "Errors in the expression are underlined in red. Roll over errors for more info."
+      tip: "Erros na expressão estão sublinhados em vermelho. Passe o mouse sobre os erros para obter mais informações."
     }, {
       id: "PREG_INTERNAL_ERROR",
-      tip: "Internal PCRE error"
+      tip: "Erro interno do PCRE"
     }, {
       id: "PREG_BACKTRACK_LIMIT_ERROR",
-      tip: "Backtrack limit was exhausted."
+      tip: "O limite de retorno foi esgotado."
     }, {
       id: "PREG_RECURSION_LIMIT_ERROR",
-      tip: "Recursion limit was exhausted"
+      tip: "O limite de recursão foi esgotado"
     }, {
       id: "PREG_BAD_UTF8_ERROR",
-      tip: "Malformed UTF-8 data"
+      tip: "Dados UTF-8 malformados"
     }, {
       id: "PREG_BAD_UTF8_OFFSET_ERROR",
-      tip: "Malformed UTF-8 data"
+      tip: "Dados UTF-8 malformados"
     }]
   };
   o.errors = {
