@@ -4,7 +4,7 @@ onmessage = function (evt) {
 	postMessage("onload");
 	var data = evt.data, text = data.text, tests = data.tests, mode = data.mode;
 	var regex = new RegExp(data.pattern, data.flags);
-	
+
 	// shared between BrowserSolver & RegExWorker
 	var matches = [], match, index, error;
 	if (mode === "tests") {
@@ -25,7 +25,7 @@ onmessage = function (evt) {
 		}
 	}
 	// end share
-	
+
 	postMessage({error: error, matches: matches, mode: mode});
 	self.close();
 };

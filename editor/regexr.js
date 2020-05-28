@@ -16184,7 +16184,7 @@ var regexr = (function () {
 
   Utils.getPatternURL = function (pattern) {
     let a = Utils.isLocal ? "?id=" : "/";
-    let url = window.location.origin,
+    let url = window.location.origin + "/editor",
         id = pattern && pattern.id || "";
     return url + a + id;
   };
@@ -22406,7 +22406,7 @@ var regexr = (function () {
     constructor(el) {
       super();
       this.el = el;
-      this.urlTemplate = "./assets/themes/%name%.css";
+      this.urlTemplate = "/assets/themes/%name%.css";
       this.targetNode = this._node = null;
       this._dark = false;
 
@@ -23656,7 +23656,7 @@ var regexr = (function () {
           this._worker.terminate();
         }
 
-        let worker = this._worker = new Worker("assets/workers/RegExWorker.js");
+        let worker = this._worker = new Worker("/assets/workers/RegExWorker.js");
 
         worker.onmessage = evt => {
           if (evt.data === "onload") {
