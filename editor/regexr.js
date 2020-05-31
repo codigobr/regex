@@ -21204,7 +21204,7 @@ var regexr = (function () {
           } // TODO: this won't match on html elements:
 
 
-          str += "<hr><code class='text'><svg class='icon load'><use xlink:href='#load'><title>Carregar o Text</title></use></svg>" + s + (over ? "<i>\u2026</i>" : "") + "</code>";
+          str += "<hr><code class='text'><svg class='icon load'><use xlink:href='#load'><title>Carregar o texto</title></use></svg>" + s + (over ? "<i>\u2026</i>" : "") + "</code>";
         }
       }
 
