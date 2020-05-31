@@ -43,7 +43,7 @@
         }
       }
       .hide-always {
-        display: none;
+        /*display: none;*/
       }
     </style>
   </head>
@@ -159,9 +159,11 @@
     </div>
     <div class="container">
       <header class="header">
-        <svg class="icon logo inline">
-          <use xlink:href="#RegExr"></use>
-        </svg>
+        <a href="/">
+          <svg class="icon logo inline">
+            <use xlink:href="#RegExr"></use>
+          </svg>
+        </a>
         <div class="settings">
           <span class="name">RegEx Sem Título</span>
           <svg class="icon share">
@@ -184,17 +186,36 @@
               </use>
             </svg>
           </li>
-          <li class="by">por <a href="http://codigo.net.br">código</a></li>
+          <li class="by">
+            <a href="http://codigo.net.br">
+              <svg class="icon">
+                <use xlink:href="#code">
+                  <title>A maior network de programação do Brasil</title>
+                </use>
+              </svg>
+              código
+            </a>
+          </li>
+          <li class="by">
+            <a href="/tutoriais">
+              <svg class="icon">
+                <use xlink:href="#help">
+                  <title>Aprenda expressões regulares</title>
+                </use>
+              </svg>
+              tutoriais
+            </a>
+          </li>
           <!-- <li class="github"><a href="http://github.com/codigobr/regex">GitHub</a></li> -->
 
           <!-- Opção de logar desabilitada, já que não tem o lado do server ainda -->
           <span class="hide-always">
             <li class="signin">
               <a>
-                <svg class="icon user inline">
+                <svg class="icon">
                   <use xlink:href="#user"></use>
                 </svg>
-                <span class="label">Sign In</span>
+                <span class="label">Entrar</span>
               </a>
             </li>
           </span>
@@ -287,7 +308,7 @@
                   <svg class="icon">
                     <use xlink:href="#code"></use>
                   </svg>
-                  <span class="label">JavaScript</span>
+                  <span class="label">J<span class="hide-small">ava</span>S<span class="hide-small">cript</span></span>
                   <svg class="icon dropdown">
                     <use xlink:href="#dropdown"></use>
                   </svg>
@@ -307,6 +328,14 @@
                       <use xlink:href="#copy"></use>
                     </svg>
                     <span class="label hide-small">Copiar</span>
+                  </div>
+                </div>
+                <div class="hide-always">
+                  <div class="button flags">
+                    <svg class="icon">
+                      <use xlink:href="#link"></use>
+                    </svg>
+                    <span class="label hide-small">Link</span>
                   </div>
                 </div>
               </div>

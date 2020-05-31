@@ -1,78 +1,902 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69958365-5"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-69958365-5');</script>
-  <meta charset="utf-8">
-  <title>Regex - Aprenda Expressões Regulares Online</title>
-  <style type="text/css">
-    body {
-      background-color: #f8f8f8;
-    }
-    .text-example {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        margin: 10% 0;
-        min-height: 200px;
-        align-items: center;
+<html class=" plat_windows arch_32"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RegEx: Editor de Expressões Regulares Online Grátis em Português - Aprenda, Construa &amp; Teste</title>
+<meta name="description" content="RegEx: Editor de Expressões Regulares Online Grátis em Português - Aprenda, Construa &amp; Teste">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=480, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="./assets/index.css">
+    <link rel="icon" href="./assets/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="./assets/icons/android-chrome-192x192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Source+Code+Pro:wght@200;400;700&display=swap" rel="stylesheet">
+    <style type="text/css">
+      .logo {
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: color 0.15s ease-in-out;
+        -webkit-transition: color 0.15s ease-in-out;
       }
-      h1 {
-        font-family: Arial;
-        font-weight: 900;
-        font-size: 100px;
-        color: #F44336;
-        margin-bottom: 20px;
+     .logo:hover {
+        color: #ddd;
+      }
+      .blue-color {
+        color: #70b0e0;
       }
       .myButton {
-        -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
-        -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
-        box-shadow:inset 0px 1px 0px 0px #caefab;
-        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
-        background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
-        background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
-        background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
-        background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
-        background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
-        background-color:#77d42a;
-        -webkit-border-radius:6px;
-        -moz-border-radius:6px;
-        border-radius:6px;
-        border:1px solid #268a16;
+        box-shadow:inset 0px 1px 0px 0px #54a3f7;
+        background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+        background-color:#007dc1;
+        border-radius:3px;
+        border:1px solid #124d77;
         display:inline-block;
         cursor:pointer;
-        color:#306108;
+        color:#ffffff;
         font-family:Arial;
-        font-size:15px;
+        font-size:13px;
         font-weight:bold;
         padding:12px 24px;
         text-decoration:none;
-        text-shadow:0px 1px 0px #aade7c;
+        text-shadow:0px 1px 0px #154682;
       }
       .myButton:hover {
-        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
-        background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
-        background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
-        background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
-        background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
-        background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
-        background-color:#5cb811;
+        background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+        background-color:#0061a7;
       }
       .myButton:active {
         position:relative;
         top:1px;
       }
+      code, .keys {
+        font-family: "Source Code Pro",monospace;
+      }
+      em {
+        background: rgba(112,176,224,.5);
+        margin-right: 1px;
+        font-style: normal;
+      }
+      hr {
+        color: #e0e0e0;
+        border-style: ridge;
+      }
+      h3::before {
+        content: "# ";
+        color: #70b0e0;
+      }
 
-  </style>
+      .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 30px 100px;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .row {
+          margin: 30px 5px;
+        }
+
+        .column {
+          flex: none!important;
+          width: 100%!important;
+        }
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+      }
+      div.feature {
+        width: 100%;
+        padding: 15px 0;
+        border-bottom: 2px dashed #70b0e0;
+      }
+      div.column h3 {
+        margin: 0.8em 0;
+      }
+    </style>
+    <script type="text/javascript">
+    var plat = 'windows'
+    if (/Mac OS X/.test(navigator.userAgent))
+        plat = 'osx'
+    else if (/Linux|FreeBSD/.test(navigator.userAgent))
+        plat = 'linux'
+    var arch = /WOW64|Win64|x86_64/.test(navigator.userAgent) ? '64' : '32'
+    document.documentElement.className += ' plat_' + plat + ' arch_' + arch
+    function byid(x)
+    {
+        return document.getElementById(x)
+    }
+    var scale = 1
+    function res()
+    {
+        scale = window.devicePixelRatio >= 1.3 && document.body.clientWidth > 1024 ? 2 : 1
+        return scale == 2 ? '@2x' : ''
+    }
+    </script>
+    <!--[if lt IE 9]>
+    <script>
+        var els = ['header', 'nav', 'section', 'main', 'article', 'aside', 'footer']
+        for (var i = 0; i < els.length; ++i)
+            document.createElement(els[i]);
+    </script>
+    <style>
+        header, nav, section, main, article, aside, footer {
+            display: block;
+        }
+    </style>
+    <![endif]-->
 </head>
 <body>
-  <div class="text-example">
-    <h1>REGEX</h1>
-    <a href="editor" class="myButton">Abrir o Editor</a>
-  </div>
+  <header>
+    <section>
+      <a class="logo" href="./">
+        Reg<span class="blue-color">[</span>Ex<span class="blue-color">]</span><span class="blue-color">.NET.BR</span>
+        <!-- <img src="./assets/icons/android-chrome-192x192.png" alt="Sublime Text"> -->
+      </a>
+      <nav>
+        <a href="./tutoriais">Tutoriais</a>
+        <a href="./editor">Editor</a>
+        <a href="https://codigo.net.br" target="_blank">Código</a>
+      </nav>
+    </section>
+  </header>
+
+<script>
+var width = 1200
+var height = 576
+</script>
+<div id="masthead">
+    <section>
+      <div class="tagline"><span>Expressões regulares são padrões utilizados<br>para selecionar combinações de caracteres em uma string</span></div>
+    <div class="download">
+        <div class="button">
+            <span class="win show_32">
+              <!-- <a href="./editor"> -->
+              <a href="./editor" class="myButton">Abrir o Editor</a>
+              </a>
+            </span>
+        </div>
+<!--         <div class="current_version">Sublime Text 3 <i>(Build 3211)</i></div>
+        <div class="changelog"><a href="http://sublimetext.com.br/docs/changelog">Changelog</a></div> -->
+    </div>
+    </section>
+</div>
+<main>
+  <section style="background-image: none">
+    <h2 class="love">
+      <span>Aprenda o básico do <b>RegEx</b>:</span>
+    </h2>
+    <div class="row">
+      <!-- Coluna a esquerda -->
+      <div class="column">
+        <div class="feature">
+          <h3>Quem inventou o RegEx?</h3>
+          <p>Na década de 1950, o ilustre matemático americano Stephen Kleene inventou as expressões regulares, ao qual ele chamou de sua notação para expressar a álgebra de conjuntos regulares. O metacaractere regex * (chamado estrela Kleene) recebeu esse nome em sua homenagem.</p>
+        </div>
+        <div class="feature">
+          <h3>Escrevendo uma RegEx</h3>
+
+          <p>
+            Um padrão de expressão é composto por um conjunto de caracteres simples, como:
+            <span class="keys"><b>/abc/</b></span><br><br>
+            Ou uma combinação de caracteres simples e especiais, como:
+            <span class="keys"><b>/ab*c/</b></span><br><br>
+            Ou <span class="keys"><b>/Capitulo (\d+)\.\d*/</b></span>
+          </p>
+
+          <p>O último exemplo contém parênteses, que são usados como um mecanismo de armazenamento. A correspondência feita por essa parte da expressão é armazenada para uso posterior.</p>
+        </div>
+        <div class="feature">
+          <h3>O que é o RegEx (Expressões Regulares)?</h3>
+
+          <p>
+            Uma expressão regular (abreviada como regex ou regexp; também conhecida como expressão racional) é uma sequência de caracteres que define um padrão de pesquisa/correspondência.
+          </p>
+          <p>
+            Normalmente, esses padrões são utilizados pelos algoritmos de busca de texto para operações <span class="feature">find</span> (encontrar) ou <span class="feature">find and replace</span> (encontrar e substituir) no conteúdo ou para validação de entrada. É uma técnica desenvolvida em ciência da computação teórica e teoria da linguagem formal.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Onde o regex é usado?</h3>
+
+          <p>
+            Expressões regulares (RegEx) são usadas em mecanismos de busca, caixas de diálogo (search and replace - encontrar e substituir) de processadores de texto e editores de texto simples, em utilitários de processamento de texto como <span class="feaure">sed</span> e <span class="feaure">AWK</span> e em análises lexicais.
+          </p>
+          <p>
+            Muitas linguagens de programação fornecem recursos de expressão regular incorporadas ou podem ser implementadas através de bibliotecas.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Classes de caracteres</h3>
+          <p>As classes de caracteres fazem uma correspondência a um caractere de um conjunto específico. Existem várias classes de predefinidas, além disso você também pode definir seus próprios conjuntos.</p>
+
+          <ul>
+            <li>
+              <span class="keys">
+                <b>[ABC]</b>
+              </span>
+              &nbsp;Conjunto de caracteres, corresponde a qualquer caractere no conjunto.
+              <br><br>
+              RegEx: <code>[aeiou]</code>
+              <br>
+              Resultado: <code>gl<em>i</em>b j<em>o</em>cks v<em>e</em>x dw<em>a</em>rv<em>e</em>s!</code>
+              <p><small><a href="./editor?engine=js&expression=/[aeiou]/g&text=glib jocks vex dwarves!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+            <li>
+              <span class="keys">
+                <b>[^ABC]</b>
+              </span>
+              &nbsp;Conjunto negado, Corresponde a qualquer caractere que não esteja no conjunto.
+              <br><br>
+              RegEx: <code>[^aeiou]</code>
+              <br>
+              Resultado: <code><em>g</em><em>l</em>i<em>b</em><em> </em><em>j</em>o<em>c</em><em>k</em><em>s</em><em> </em><em>v</em>e<em>x</em><em> </em><em>d</em><em>w</em>a<em>r</em><em>v</em>e<em>s</em><em>!</em></code>
+              <p><small><a href="./editor?engine=js&expression=/[^aeiou]/g&text=glib jocks vex dwarves!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+            <li>
+              <span class="keys">
+                <b>[A-Z]</b>
+              </span>
+              &nbsp;Alcance, encontra qualquer caractere que esteja entre A e Z usando o código de caractere como referência, a correspondência inclui A e Z no resultado.
+              <br><br>
+              RegEx: <code>[g-s]</code>
+              <br>
+              Resultado: <code>abcdef<em>g</em><em>h</em><em>i</em><em>j</em><em>k</em><em>l</em><em>m</em><em>n</em><em>o</em><em>p</em><em>q</em><em>r</em><em>s</em>tuvwxyz</code>
+              <p><small><a href="./editor?engine=js&expression=/[g-s]/g&text=abcdefghijklmnopqrstuvwxyz" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>.</b>
+              </span>
+              &nbsp;Ponto, corresponde a qualquer caractere, exceto quebras de linha. Equivalente a <span class="keys"><b>[^\n\r]</b></span>.
+              <br><br>
+              RegEx: <code>.</code>
+              <br>
+              Resultado: <code><em>g</em><em>l</em><em>i</em><em>b</em><em> </em><em>j</em><em>o</em><em>c</em><em>k</em><em>s</em><em> </em><em>v</em><em>e</em><em>x</em><em> </em><em>d</em><em>w</em><em>a</em><em>r</em><em>v</em><em>e</em><em>s</em><em>!</em></code>
+              <p><small><a href="./editor?engine=js&expression=/./g&text=glib jocks vex dwarves!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>[\s\S]</b>
+              </span>
+              &nbsp;Corresponde a qualquer, um conjunto de caracteres que pode ser usado para corresponder a qualquer caractere, incluindo quebras de linha, sem o sinalizador <span class="feature">dotall</span>(s).
+              <br>Uma alternativa é <span class="keys"><b>[^]</b></span>, mas não é suportado em todos os navegadores.</span>.
+              <br><br>
+              RegEx: <code>[\s\S]</code>
+              <br>
+              Resultado: <code><em>g</em><em>l</em><em>i</em><em>b</em><em> </em><em>j</em><em>o</em><em>c</em><em>k</em><em>s</em><em> </em><em>v</em><em>e</em><em>x</em><em> </em><em>d</em><em>w</em><em>a</em><em>r</em><em>v</em><em>e</em><em>s</em><em>!</em></code>
+              <p><small><a href="./editor?engine=js&expression=/[\s\S]/g&text=glib jocks vex dwarves!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\w</b>
+              </span>
+              &nbsp;Palavra, corresponde a qualquer caractere de palavra (alfanumérico e sublinhado). Corresponde apenas a caracteres low-ascii (caracteres padrões) (não inclui caracteres acentuados ou não romanos). Equivalente a <span class="keys"><b>[A-Za-z0-9_]</b></span>.
+              <br><br>
+              RegEx: <code>\w</code>
+              <br>
+              Resultado: <code><em>b</em><em>o</em><em>n</em><em>j</em><em>o</em><em>u</em><em>r</em>, <em>m</em><em>o</em><em>n</em> <em>f</em><em>r</em>è<em>r</em><em>e</em></code>
+              <p><small><a href="./editor?engine=js&expression=/\w/g&text=bonjour, mon frère" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\W</b>
+              </span>
+              &nbsp;Não palavra, corresponde a qualquer caractere que não seja um caractere de palavra (alfanumérico e sublinhado). Equivalente a <span class="keys"><b>[^A-Za-z0-9_]</b></span>.
+              <br><br>
+              RegEx: <code>\W</code>
+              <br>
+              Resultado: <code>bonjour<em>,</em><em> </em>mon<em> </em>fr<em>è</em>re</code>
+              <p><small><a href="./editor?engine=js&expression=/\W/g&text=bonjour, mon frère" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\d</b>
+              </span>
+              &nbsp;Dígito, corresponde a qualquer caractere de dígito (0-9). Equivalente a <span class="keys"><b>[0-9]</b></span>.
+              <br><br>
+              RegEx: <code>\d</code>
+              <br>
+              Resultado: <code>+<em>1</em>-(<em>4</em><em>4</em><em>4</em>)-<em>5</em><em>5</em><em>5</em>-<em>1</em><em>2</em><em>3</em><em>4</em></code>
+              <p><small><a href="./editor?engine=js&expression=/\d/g&text=+1-(444)-555-1234" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\D</b>
+              </span>
+              &nbsp;Não dígito, corresponde a qualquer caractere que não seja um dígito (0-9). Equivalente a <span class="keys"><b>[^0-9]</b></span>.
+              <br><br>
+              RegEx: <code>\D</code>
+              <br>
+              Resultado: <code><em>+</em>1<em>-</em><em>(</em>444<em>)</em><em>-</em>555<em>-</em>1234</code>
+              <p><small><a href="./editor?engine=js&expression=/\D/g&text=+1-(444)-555-1234" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\s</b>
+              </span>
+              &nbsp;Espaço em branco, corresponde a qualquer caractere de espaço em branco (espaços, tabulações, quebras de linha).
+              <br><br>
+              RegEx: <code>\s</code>
+              <br>
+              Resultado: <code>glib<em> </em>jocks<em> </em>vex<em> </em>dwarves!</code>
+              <p><small><a href="./editor?engine=js&expression=/\s/g&text=glib jocks vex dwarves!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\S</b>
+              </span>
+              &nbsp;Não espaço em branco, corresponde a qualquer caractere que não seja um espaço em branco (espaços, tabulações, quebras de linha).
+              <br><br>
+              RegEx: <code>\S</code>
+              <br>
+              Resultado: <code><em>g</em><em>l</em><em>i</em><em>b</em> <em>j</em><em>o</em><em>c</em><em>k</em><em>s</em> <em>v</em><em>e</em><em>x</em> <em>d</em><em>w</em><em>a</em><em>r</em><em>v</em><em>e</em><em>s</em><em>!</em></code>
+              <p><small><a href="./editor?engine=js&expression=/\S/g&text=glib jocks vex dwarves!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\p{L}</b>
+              </span>
+              &nbsp;Categoria Unicode, corresponde a um caractere na categoria unicode especificada. Por exemplo, <span class="keys"><b>\p{Ll}</b></span> irá corresponder a qualquer letra minúscula. Requer o sinalizador <span class="feature">u</span>.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\P{L}</b>
+              </span>
+              &nbsp;Categoria não Unicode, corresponde a qualquer caractere que não esteja na categoria unicode especificada. Requer o sinalizador <span class="feature">u</span>.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\p{Han}</b>
+              </span>
+              &nbsp;Script Unicode, corresponde a qualquer caractere no script unicode especificado. Por exemplo, <span class="keys"><b>\p{Arabic}</b></span> irá corresponder a caracteres do script Árabe. Requer o sinalizador <span class="feature">u</span>.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\P{Han}</b>
+              </span>
+              &nbsp;Script não Unicode, corresponde a qualquer caractere que não esteja no script unicode especificado. Requer o sinalizador <span class="feature">u</span>.
+            </li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Quantificadore & Alternação</h3>
+          <p>
+            Os quantificadores indicam que o token anterior deve corresponder um certo número de vezes. Por padrão, os quantificadores são gananciosos e corresponderão ao maior número de caracteres possível.
+          </p>
+          <p>
+            A alternância atua como um OU(OR) booleano, correspondendo a uma sequência ou outra.
+          </p>
+
+          <ul>
+            <li>
+              <span class="keys">
+                <b>+</b>
+              </span>
+              &nbsp;Sinal de adição, corresponde a 1 ou mais do token anterior.
+              <br><br>
+              RegEx: <code>b\w+</code>
+              <br>
+              Resultado: <code>b <em>be</em> <em>bel</em> <em>bele</em> <em>beleza</em></code>
+              <p><small><a href="./editor?engine=js&expression=/b\w+/g&text=b be bel bele beleza" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>*</b>
+              </span>
+              &nbsp;Asterisco (estrela Kleene), corresponde a 0 ou mais do token anterior.
+              <br><br>
+              RegEx: <code>b\w*</code>
+              <br>
+              Resultado: <code><em>b</em> <em>be</em> <em>bel</em> <em>bele</em> <em>beleza</em></code>
+              <p><small><a href="./editor?engine=js&expression=/b\w*/g&text=b be bel bele beleza" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>{1,3}</b>
+              </span>
+              &nbsp;Quanticador, corresponde à quantidade especificada do token anterior. <b>{1,3}</b> corresponderá a 1 até 3. <b>{3}</b> corresponderá exatamente a 3. <b>{3,}</b> irá corresponder a 3 ou mais.
+              <br><br>
+              RegEx: <code>b\w{2,3}</code>
+              <br>
+              Resultado: <code>b be <em>bel</em> <em>bele</em> <em>bele</em>za</code>
+              <p><small><a href="./editor?engine=js&expression=/b\w{2,3}/g&text=b be bel bele beleza" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>?</b>
+              </span>
+              &nbsp;Interrogação (opcional), a 0 ou 1 do token anterior, tornando-o opcional.
+              <br><br>
+              RegEx: <code>fac?to</code>
+              <br>
+              Resultado: <code><em>fato</em> <em>facto</em></code>
+              <p><small><a href="./editor?engine=js&expression=/fac?to/g&text=fato facto" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>?</b>
+              </span>
+              &nbsp;Interrogação (preguiçoso), torna o quantificador anterior <b>preguiçoso</b>, fazendo com que ele corresponda ao <b>mínimo</b> de caracteres possível. Por padrão, os quantificadores são gananciosos e corresponderão ao máximo de caracteres possível.
+              <br><br>
+              RegEx: <code>b\w+?</code>
+              <br>
+              Resultado: <code>b <em>be</em> <em>be</em>l <em>be</em>le <em>be</em>leza</code>
+              <p><small><a href="./editor?engine=js&expression=/b\w+?/g&text=b be bel bele beleza" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>|</b>
+              </span>
+              &nbsp;Alternação, Atua como um OU (OR) booleano. Corresponde à expressão antes ou depois do |. Pode operar dentro de um grupo ou em uma expressão inteira. Os padrões serão testados em ordem.
+              <br><br>
+              RegEx: <code>b(a|e|i)d</code>
+              <br>
+              Resultado: <code><em>bad</em> bud bod <em>bed</em> <em>bid</em></code>
+              <p><small><a href="./editor?engine=js&expression=/b(a|e|i)d/g&text=bad bud bod bed bid" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Coluna a direita -->
+      <div class="column">
+        <div class="feature">
+          <h3>Âncoras</h3>
+
+          <p>As âncoras são únicas, pois correspondem a uma posição dentro de uma sequência, não a um caractere.</p>
+          <ul>
+            <li>
+              <span class="keys">
+                <b>^</b>
+              </span>
+              &nbsp;Início, corresponde ao início da string ou no início de uma linha se o sinalizador de múltiplas linhas (<span class="feature">m</span>) estiver habilitado. Retorna uma posição e não um caractere.
+              <br><br>
+              RegEx: <code>^\w+</code>
+              <br>
+              Resultado: <code><em>tr</em>ês tigres tristes</code>
+              <p><small><a href="./editor?engine=js&expression=/^\w+/g&text=três tigres tristes" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>$</b>
+              </span>
+              &nbsp;Fim, corresponde ao final da string ou no final de uma linha se o sinalizador de múltiplas linhas (<span class="feature">m</span>) estiver habilitado. Retorna uma posição e não um caractere.
+              <br><br>
+              RegEx: <code>^\w+$</code>
+              <br>
+              Resultado: <code>três tigres <em>tristes</em></code>
+              <p><small><a href="./editor?engine=js&expression=/^\w+$/g&text=três tigres tristes" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\b</b>
+              </span>
+              &nbsp;Limite de palavra, corresponde a uma posição limite entre um caractere de palavra e um caractere que não seja de uma palavra ou uma posição (início/fim da string).
+              <br><br>
+              RegEx: <code>s\b</code>
+              <br>
+              Resultado: <code>trê<em>s</em> tigre<em>s</em> triste<em>s</em></code>
+              <p><small><a href="./editor?engine=js&expression=/s\b/g&text=três tigres tristes" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\B</b>
+              </span>
+              &nbsp;Não limite de palavra, Corresponde a qualquer posição que não seja um limite de palavra. Retorna uma posição e não um caractere.
+              <br><br>
+              RegEx: <code>s\B</code>
+              <br>
+              Resultado: <code>três tigres tri<em>s</em>tes</code>
+              <p><small><a href="./editor?engine=js&expression=/s\B/g&text=três tigres tristes" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Caracteres escapados</h3>
+          <p>Sequências de escape podem ser usadas para inserir caracteres reservados, especiais e unicode. Todos os caracteres de escape começam com a \ (barra invertida).</p>
+
+          <ul>
+            <li>
+              <span class="keys">
+                <b>\+</b>
+              </span>
+              &nbsp;Caracteres reservados, os caracteres a seguir tem um significado especial e devem ser precedidos por uma \ (barra invertida) para representação literal: <span class="keys"><b>+*?^$\.[]{}()|/</b></span>
+              <br><br>
+              Dentro de um conjunto de caracteres, apenas a <span class="keys"><b>\</b></span>, <span class="keys"><b>-</b></span>, e <span class="keys"><b>]</b></span> precisam ser escapados.
+              <br><br>
+              RegEx: <code>\+</code>
+              <br>
+              Resultado: <code>1 <em>+</em> 1 = 2</code>
+              <p><small><a href="./editor?engine=js&expression=/\+/g&text=1 + 1 = 2" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\000</b>
+              </span>
+              &nbsp;Escapada octal, caractere de escapada octal se dá na forma <span class="keys"><b>\000</b></span>. O valor deve ser menor que 255 (<span class="keys"><b>\377</b></span>).
+              <br><br>
+              RegEx: <code>\251</code>
+              <br>
+              Resultado: <code>RegEx é <em>©</em>2020</code>
+              <p><small><a href="./editor?engine=js&expression=/\251/g&text=RegEx é ©2020" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\xFF</b>
+              </span>
+              &nbsp;Escapada hexadecimal, caractere de escapada hexadecimal se dá na forma <b>\xFF</b>.
+              <br><br>
+              RegEx: <code>\xA9</code>
+              <br>
+              Resultado: <code>RegEx é <em>©</em>2020</code>
+              <p><small><a href="./editor?engine=js&expression=/\xA9/g&text=RegEx é ©2020" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\uFFFF</b>
+              </span>
+              &nbsp;Escapada unicode, caractere de escapada unicode se dá na forma <b>\uFFFF</b>.
+              <br><br>
+              RegEx: <code>\u00A9</code>
+              <br>
+              Resultado: <code>RegEx é <em>©</em>2020</code>
+              <p><small><a href="./editor?engine=js&expression=/\u00A9/g&text=RegEx é ©2020" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\u{FFFF}</b>
+              </span>
+              &nbsp;Escapada unicode estendida, caractere de escapada unicode extendida se dá na forma <b>\u{FFFF}</b>. Suporta uma gama completa de escapes de ponto unicode com qualquer número de dígitos hexadecimais. Requer o sinalizador unicode (<span class="feature">u</span>).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\cI</b>
+              </span>
+              &nbsp;Escapada controle de caracteres se dá na forma <b>\cZ</b>. Isso pode variar de <b>\cA</b> (SOH, código do caractere 1) até <b>\cZ</b> (SUB, código do caractere 26).
+              <br><br>
+              Exemplo: <span class="keys"><b>\cI</b></span> corresponde a TAB (código do caractere 9).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\t</b>
+              </span>
+              &nbsp;Tabulação, corresponde ao caractere TAB (código do caractere 9).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\n</b>
+              </span>
+              &nbsp;Line feed, corresponde ao caractere LINE FEED (código do caractere 10).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\v</b>
+              </span>
+              &nbsp;Tabulação vertical, corresponde ao caractere VERTICAL TAB (código do caractere 11).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\f</b>
+              </span>
+              &nbsp;Form feed, corresponde ao caractere FORM FEED (código do caractere 12).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\r</b>
+              </span>
+              &nbsp;Carriage return, corresponde ao caractere CARRIAGE RETURN (código do caractere 13).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\0</b>
+              </span>
+              &nbsp;Null (nulo), corresponde ao caractere NULL (código do caractere 0).
+            </li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Grupos & Referências</h3>
+          <p>
+            Os grupos permitem combinar uma sequência de tokens para operá-los juntos. Os grupos de captura podem ser referenciados por uma referência anterior e acessados separadamente nos resultados.
+          </p>
+
+          <ul>
+            <li>
+              <span class="keys">
+                <b>(ABC)</b>
+              </span>
+              &nbsp;Grupo de captura, agrupa vários tokens e cria um grupo de captura para extrair uma substring ou usar uma referência anterior.
+              <br><br>
+              RegEx: <code>(ha)+</code>
+              <br>
+              Resultado: <code><em>hahaha</em> <em>ha</em>a <em>ha</em>h!</code>
+              <p><small><a href="./editor?engine=js&expression=/(ha)+/g&text=hahaha haa hah!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>(?&lt;nome&gt;ABC)</b>
+              </span>
+              &nbsp;Grupo de captura nomeado, cria um grupo de captura que pode ser referenciado pelo nome especificado.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\1</b>
+              </span>
+              &nbsp;Corresponde aos resultados de um grupo de captura. Por exemplo, <b>\1</b> corresponde aos resultados do primeiro grupo de captura e <b>\3</b> coincide com o terceiro.
+              <br><br>
+              RegEx: <code>(\w)a\1</code>
+              <br>
+              Resultado: <code><em>hah</em> vai cai pai uai</code>
+              <p><small><a href="./editor?engine=js&expression=/(\w)a\1/g&text=hah vai cai pai uai" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>(?:ABC)</b>
+              </span>
+              &nbsp;Agrupa vários tokens juntos <b>sem</b> criar um grupo de captura.
+              <br><br>
+              RegEx: <code>(?:ha)+</code>
+              <br>
+              Resultado: <code><em>hahaha</em> <em>ha</em>a <em>ha</em>h!</code>
+              <p><small><a href="./editor?engine=js&expression=/(?:ha)+/g&text=hahaha haa hah!" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Lookaround (Pesquisar)</h3>
+          <p>
+            Lookaround permite encontrar um grupo antes (lookbehind) ou depois (lookahead) do seu padrão principal sem incluí-lo no resultado.
+          </p>
+          <p>
+            Lookarounds negativo especifica um grupo que NÃO pode ser encontrado antes ou depois do padrão.
+          </p>
+
+          <ul>
+            <li>
+              <span class="keys">
+                <b>(?=ABC)</b>
+              </span>
+              &nbsp;Lookahead positivo, corresponde a um grupo após a expressão principal sem incluí-lo no resultado.
+              <br><br>
+              RegEx: <code>\d(?=px)</code>
+              <br>
+              Resultado: <code>1pt <em>2</em>px 3em <em>4</em>px</code>
+              <p><small><a href="./editor?engine=js&expression=/\d(?=px)/g&text=1pt 2px 3em 4px" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>(?!ABC)</b>
+              </span>
+              &nbsp;Lookahead negativos, especifica um grupo que não pode corresponder após a expressão principal (se corresponder, o resultado será descartado).
+              <br><br>
+              RegEx: <code>\d(?!px)</code>
+              <br>
+              Resultado: <code><em>1</em>pt 2px <em>3</em>em 4px</code>
+              <p><small><a href="./editor?engine=js&expression=/\d(?!px)/g&text=1pt 2px 3em 4px" target="_blank">Abrir no editor RegEx</a></small></p>
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>(?&lt;=ABC)</b>
+              </span>
+              &nbsp;Lookbehind positivo, corresponde a um grupo antes da expressão principal sem incluí-lo no resultado.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>(?&lt;!ABC)</b>
+              </span>
+              &nbsp;Lookbehind negativo, especifica um grupo que não pode ser correspondido antes da expressão principal (se corresponder, o resultado será descartado).
+            </li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Substituição</h3>
+          <p>Esses tokens são usados em uma sequência de substituição para inserir diferentes partes na correspondência.</p>
+          <ul>
+            <li>
+              <span class="keys">
+                <b>$&</b>
+              </span>
+              &nbsp;Correspondência, insere o texto correspondente.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>$1</b>
+              </span>
+              &nbsp;Grupo de captura, insere os resultados do grupo de captura especificado. Por exemplo, $3 iria inserir o terceiro grupo de captura.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>$`</b>
+              </span>
+              &nbsp;Antes da correspondência, insere a parte da string de origem que precede a correspondência.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>$'</b>
+              </span>
+              &nbsp;Depois da correspondência, insere a parte da string de origem que sucede a correspondência.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>$$</b>
+              </span>
+              &nbsp;Cifrão escapado, insere um cifrão ($).
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>\n</b>
+              </span>
+              &nbsp;Por conveniência, esses caracteres de escape são suportados na aba Substituir do editor: <b>\n</b>, <b>\r</b>, <b>\t</b>, <b>\\</b>, e os escapes unicode <b>\uFFFF</b>. Isso pode variar dependendo do ambiente de implementação.
+            </li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Sinalizadores</h3>
+          <p>Os sinalizadores alteram como a expressão é interpretada. Os sinalizadores são inseridos após a barra de fechamento da expressão (ex. /.+/igm ).</p>
+          <ul>
+            <li>
+              <span class="keys">
+                <b>i</b>
+              </span>
+              &nbsp;Ignorar capitalização, torna toda a expressão sem distinção entre maiúsculas e minúsculas. Por exemplo, <b>/aBc/i</b> encontraria <b>AbC</b>.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>g</b>
+              </span>
+              &nbsp;Pesquisa global, armazena o índice da última correspondência, permitindo que pesquisas subsequentes iniciem no final da correspondência anterior.
+              <br>
+              Sem a sinalizador global, as pesquisas subsequentes retornariam a mesma correspondência.
+              <br>
+              O editor de RegEx procura uma única correspondência quando o sinalizador global está desabilitado para evitar erros de correspondências infinitas.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>m</b>
+              </span>
+              &nbsp;Multilinhas, quando o sinalizador de múltiplas linhas está ativado, âncoras de início (^) e fim ($) corresponderão ao começo e o fim da linha, em vez do início e do fim de uma string.
+              <br>
+              Observe que padrões como <span class="keys"><b>/^[\s\S]+$/m</b></span> pode retornar correspondências que abrangem várias linhas porque as âncoras corresponderão ao início/fim de qualquer linha.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>u</b>
+              </span>
+              &nbsp;Unicode, Quando o sinalizador unicode está ativado, você pode usar escapes unicode estendidos na forma de <b>\x{FFFFF}</b>.
+              <br>
+              Também torna outros escapes mais estritos, por exemplo: (ex. <b>\j</b>) geraria um erro.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>y</b>
+              </span>
+              &nbsp;Pegajoso, A expressão corresponderá apenas a partir da posição <b>lastIndex</b> (último indexador) e ignorará o sinalizador global (<b>g</b>) se estiver definido. Como cada pesquisa no editor de RegEx é discreta, esse sinalizador não impacta os resultados exibidos.
+            </li>
+            <hr>
+
+            <li>
+              <span class="keys">
+                <b>s</b>
+              </span>
+              &nbsp;Tudo (dotall), quando esse sinalizador estiver ativado o ponto (<b>.</b>) corresponderá a qualquer caractere, incluindo nova linha (break line).
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+  <footer>
+    <section>
+      &copy; <a href="https://codigo.net.br/">Código</a>
+
+      <p>Feito com amor em SP</p>
+    </section>
+  </footer>
+  <!--[if lt IE 9]>
+  <script>
+      var logo_img = byid('logo').getElementsByTagName('IMG')[0]
+      logo_img.src = logo_img.src.replace('.svg', '.png')
+  </script>
+  <![endif]-->
 </body>
 </html>

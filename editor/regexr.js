@@ -21189,7 +21189,7 @@ var regexr = (function () {
           str += "<h1>" + this.title + "</h1><hr>";
         }
 
-        str += "<code class='expression'><svg class='icon load'><use xlink:href='#load'><title>Load expression</title></use></svg>" + Utils.htmlSafe(exp) + "</code>";
+        str += "<code class='expression'><svg class='icon load'><use xlink:href='#load'><title>Carregar a expressão</title></use></svg>" + Utils.htmlSafe(exp) + "</code>";
 
         if (txt && regex) {
           let over = Math.max(0, txt.length - 160),
@@ -21204,7 +21204,7 @@ var regexr = (function () {
           } // TODO: this won't match on html elements:
 
 
-          str += "<hr><code class='text'><svg class='icon load'><use xlink:href='#load'><title>Load text</title></use></svg>" + s + (over ? "<i>\u2026</i>" : "") + "</code>";
+          str += "<hr><code class='text'><svg class='icon load'><use xlink:href='#load'><title>Carregar o Text</title></use></svg>" + s + (over ? "<i>\u2026</i>" : "") + "</code>";
         }
       }
 
@@ -23014,7 +23014,7 @@ var regexr = (function () {
       label: "Alcance",
       tip: "Corresponde a qualquer caractere que esteja entre {{getChar(prev)}} e {{getChar(next)}} (código do caractere {{prev.code}} até {{next.code}}). {{getInsensitive()}}",
       example: ["[g-s]", "abcdefghijklmnopqrstuvwxyz"],
-      desc: "Corresponde a um caractere com um código de caractere entre os dois caracteres especificados, inclusive.",
+      desc: "Encontra qualquer caractere que esteja entre A e Z usando o código de caractere como referência, a correspondência inclui A e Z no resultado.",
       token: "[A-Z]"
     }, {
       id: "posixcharclass",
@@ -23027,7 +23027,7 @@ var regexr = (function () {
       id: "dot",
       label: "Ponto",
       tip: "Corresponde a qualquer caractere {{getDotAll()}}.",
-      desc: "Corresponde a qualquer caractere, exceto quebras de linha..",
+      desc: "Corresponde a qualquer caractere, exceto quebras de linha.",
       ext: " Equivalente a <code>[^\\n\\r]</code>.",
       example: [".", "glib jocks vex dwarves!"],
       token: "."
@@ -23144,8 +23144,8 @@ var regexr = (function () {
       token: "\\P{Han}"
     }]
   }, {
-    label: "Anchors",
-    id: "âncoras",
+    label: "Âncoras",
+    id: "anchors",
     desc: "As âncoras são únicas, pois correspondem a uma <b>posição</b> dentro de uma sequência, não a um <b>caractere</b>.",
     kids: [{
       id: "bos",
@@ -23233,8 +23233,8 @@ var regexr = (function () {
       token: "\\uFFFF"
     }, {
       id: "escunicodeub",
-      label: "Escapada Unicode Extendida",
-      desc: "Caractere de escapada unicode extendida se dá na forma <code>\\u{FFFF}</code>.",
+      label: "Escapada Unicode Estendida",
+      desc: "Caractere de escapada unicode estendida se dá na forma <code>\\u{FFFF}</code>.",
       ext: " Suporta uma gama completa de escapes de ponto unicode com qualquer número de dígitos hexadecimais. <p>Requer o sinalizador unicode (<code>u</code>).</p>",
       token: "\\u{FFFF}"
     }, {
